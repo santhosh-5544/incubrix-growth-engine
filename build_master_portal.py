@@ -54,13 +54,17 @@ html_template = """<!DOCTYPE html>
 
     /* Top Navigation */
     header {
-      background: rgba(10, 14, 23, 0.92);
-      border-bottom: 1px solid var(--card-border);
+      background: rgba(10, 14, 23, 0.88);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.8);
       position: sticky;
       top: 0;
       z-index: 100;
       backdrop-filter: blur(16px);
-      padding: 0.85rem 2rem;
+      padding: 0.75rem 2rem;
+    }
+    .header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -68,47 +72,62 @@ html_template = """<!DOCTYPE html>
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.75rem;
     }
     .brand-logo {
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
-      border-radius: 10px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1rem;
       color: white;
-      box-shadow: 0 0 16px var(--primary-glow);
+      box-shadow: 0 0 14px var(--primary-glow);
     }
-    .brand-info h1 {
+    .brand-title {
       font-size: 1.05rem;
       font-weight: 700;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       letter-spacing: -0.01em;
     }
-    .brand-info p {
+    .brand-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      color: #A5B4FC;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .brand-sub {
       font-size: 0.72rem;
       color: var(--text-dim);
     }
     .top-actions {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.6rem;
       align-items: center;
     }
     .btn {
       background: var(--primary);
       color: white;
-      padding: 0.5rem 1.15rem;
+      padding: 0.45rem 1rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.825rem;
+      font-size: 0.8rem;
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
       border: 1px solid transparent;
       cursor: pointer;
     }
@@ -118,7 +137,7 @@ html_template = """<!DOCTYPE html>
       transform: translateY(-1px);
     }
     .btn-outline {
-      background: rgba(31, 41, 55, 0.6);
+      background: rgba(31, 41, 55, 0.5);
       border: 1px solid var(--card-border-glow);
       color: var(--text);
     }
@@ -133,39 +152,55 @@ html_template = """<!DOCTYPE html>
       box-shadow: 0 0 18px var(--success-glow);
     }
 
-    /* Sub-Navigation Tabs Bar */
-    .master-nav {
-      background: rgba(17, 24, 39, 0.95);
-      border-bottom: 1px solid var(--card-border);
+    /* Sub-Navigation Master Dock */
+    .master-nav-wrapper {
+      background: rgba(10, 14, 23, 0.9);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.7);
       position: sticky;
-      top: 59px;
+      top: 57px;
       z-index: 90;
       backdrop-filter: blur(12px);
-      padding: 0 2rem;
+      padding: 0.5rem 2rem;
+    }
+    .master-nav {
+      max-width: 1240px;
+      margin: 0 auto;
       display: flex;
-      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.35rem;
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(55, 65, 81, 0.5);
+      border-radius: 12px;
+      padding: 4px;
       overflow-x: auto;
     }
     .nav-tab {
+      flex: 1;
+      text-align: center;
       background: transparent;
       border: none;
-      color: var(--text-muted);
+      color: #94A3B8;
       font-weight: 600;
-      font-size: 0.85rem;
-      padding: 0.85rem 1rem;
+      font-size: 0.78rem;
+      padding: 0.5rem 0.65rem;
       cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
+      border-radius: 8px;
+      transition: all 0.15s ease;
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      justify-content: center;
+      gap: 0.35rem;
     }
-    .nav-tab:hover { color: white; }
+    .nav-tab:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.04);
+    }
     .nav-tab.active {
       color: white;
-      border-bottom-color: var(--primary);
-      background: rgba(99, 102, 241, 0.06);
+      background: #4F46E5;
+      box-shadow: 0 2px 10px rgba(79, 70, 229, 0.4);
     }
 
     /* Hero */
@@ -624,31 +659,38 @@ html_template = """<!DOCTYPE html>
 
   <!-- Header -->
   <header>
-    <div class="brand">
-      <div class="brand-logo">IB</div>
-      <div class="brand-info">
-        <h1>IncuBrix Growth Engine</h1>
-        <p>Option 1: Lead Gen & Outreach System • Candidate: Santhosh P</p>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo">IB</div>
+        <div class="brand-info">
+          <div class="brand-title">
+            IncuBrix Growth Engine
+            <span class="brand-badge">Option 1</span>
+          </div>
+          <p class="brand-sub">Lead Gen & Outreach System • Candidate: Santhosh P (24I435)</p>
+        </div>
       </div>
-    </div>
-    <div class="top-actions">
-      <a href="https://github.com/santhosh-5544/incubrix-growth-engine" target="_blank" class="btn btn-outline">GitHub Repo ↗</a>
-      <a href="https://github.com/santhosh-5544/incubrix-growth-engine/raw/main/output/leads.csv" class="btn btn-outline">leads.csv</a>
-      <a href="https://github.com/santhosh-5544/incubrix-growth-engine/raw/main/output/IncuBrix_Submission_Workbook_Completed.xlsx" class="btn btn-accent">Workbook (.xlsx)</a>
+      <div class="top-actions">
+        <a href="https://github.com/santhosh-5544/incubrix-growth-engine" target="_blank" class="btn btn-outline">GitHub Repo ↗</a>
+        <a href="https://github.com/santhosh-5544/incubrix-growth-engine/raw/main/output/leads.csv" class="btn btn-outline">leads.csv</a>
+        <a href="https://github.com/santhosh-5544/incubrix-growth-engine/raw/main/output/IncuBrix_Submission_Workbook_Completed.xlsx" class="btn btn-accent">Workbook (.xlsx)</a>
+      </div>
     </div>
   </header>
 
-  <!-- Master Navigation Tabs -->
-  <div class="master-nav">
-    <button class="nav-tab active" onclick="switchSection('audit')">✓ 04_SELF_CHECK Compliance</button>
-    <button class="nav-tab" onclick="switchSection('leads')">👥 02_LEADS Explorer (1,000)</button>
-    <button class="nav-tab" onclick="switchSection('insights')">💡 01_INSIGHT Product Audit</button>
-    <button class="nav-tab" onclick="switchSection('priority_a')">⭐ 25 Priority A Outreach</button>
-    <button class="nav-tab" onclick="switchSection('sequences')">✉️ Multi-Channel Sequences</button>
-    <button class="nav-tab" onclick="switchSection('seed_test')">🧪 Seed Test Verification</button>
-    <button class="nav-tab" onclick="switchSection('engine')">⚙️ 03_ENGINE Telemetry</button>
-    <button class="nav-tab" onclick="switchSection('launch')">🚀 30-Day Launch Kit</button>
-    <button class="nav-tab" onclick="switchSection('videos')">🎬 Video Scripts & Prep</button>
+  <!-- Master Navigation Tabs Dock -->
+  <div class="master-nav-wrapper">
+    <div class="master-nav">
+      <button class="nav-tab active" onclick="switchSection('audit')">✓ Compliance</button>
+      <button class="nav-tab" onclick="switchSection('leads')">👥 1,000 Leads</button>
+      <button class="nav-tab" onclick="switchSection('insights')">💡 Product Audit</button>
+      <button class="nav-tab" onclick="switchSection('priority_a')">⭐ Priority A (25)</button>
+      <button class="nav-tab" onclick="switchSection('sequences')">✉️ Sequences</button>
+      <button class="nav-tab" onclick="switchSection('seed_test')">🧪 Seed Test</button>
+      <button class="nav-tab" onclick="switchSection('engine')">⚙️ Telemetry</button>
+      <button class="nav-tab" onclick="switchSection('launch')">🚀 Launch Kit</button>
+      <button class="nav-tab" onclick="switchSection('videos')">🎬 Video Prep</button>
+    </div>
   </div>
 
   <!-- Hero Header -->
