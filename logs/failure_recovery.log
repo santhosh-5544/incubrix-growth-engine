@@ -1,0 +1,11 @@
+{
+  "mode": "fail-test",
+  "input_size": 100,
+  "items_produced": 100,
+  "items_rejected": 0,
+  "duplicates_removed": 0,
+  "runtime_minutes": 0.02,
+  "direct_cost": "$0.00",
+  "status": "RECOVERED",
+  "retries_handled": 3
+}

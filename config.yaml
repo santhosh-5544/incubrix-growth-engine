@@ -1,0 +1,79 @@
+engine:
+  name: "IncuBrix Multi-Channel Lead Generation & Outreach Engine"
+  version: "2.1.0"
+  author: "Santhosh P (Growth Engineer Candidate)"
+  target_leads: 1000
+  priority_a_target: 25
+
+compliance:
+  # Developed, English-speaking markets (at least 80%, at least 3 countries, max 60% per country)
+  approved_countries:
+    - US  # United States
+    - GB  # United Kingdom
+    - CA  # Canada
+    - AU  # Australia
+    - SG  # Singapore
+    - IE  # Ireland
+    - NZ  # New Zealand
+  min_approved_country_ratio: 0.80
+  min_country_count: 3
+  max_single_country_ratio: 0.60
+
+segments:
+  - "Podcaster"
+  - "YouTuber"
+  - "Expert-Led Creator"
+
+activity_rules:
+  min_items_last_30d: 8
+  min_longform_last_60d: 2
+
+scoring_weights:
+  fit_weight: 0.30
+  need_weight: 0.30
+  activity_weight: 0.20
+  reachability_weight: 0.20
+
+exclusions:
+  agency_and_brand_keywords:
+    - "media group"
+    - "productions"
+    - "publishing"
+    - "broadcasting"
+    - "corporation"
+    - "network"
+    - "records"
+    - "vevo"
+    - "official"
+    - "directory"
+    - "agency"
+    - "management"
+    - "magazine"
+    - "news"
+    - "tv"
+    - "daily mail"
+    - "bloomberg"
+    - "techcrunch"
+    - "reuters"
+    - "bbc"
+    - "cnn"
+    - "forbes"
+
+incubrix_needs:
+  - key: "Shorts Repurposing Bottleneck"
+    description: "Publishes longform 30-60min videos/podcasts but lacks short-form vertical clips on Shorts/Reels/TikTok."
+  - key: "Multilingual Audio Dubbing"
+    description: "Has sizable international English audience that would expand rapidly with AI voice dubbing in ES, PT, DE, JA."
+  - key: "Inconsistent Cross-Platform Publishing"
+    description: "Active on primary platform (e.g. YouTube or Spotify) but missing automated syndication across LinkedIn and Instagram."
+  - key: "Missing Video Captions & Retention Clips"
+    description: "Content lacks animated dynamic captions and engaging hook cutouts to maximize watch time and retention."
+  - key: "Editing Backlog & Team Workflow Overhead"
+    description: "Mentions slow turnaround times with freelance video editors or spending 15+ hours/week manually slicing highlights."
+
+channel_hierarchy:
+  - "Email"
+  - "LinkedIn"
+  - "X (Twitter)"
+  - "Instagram"
+  - "Podcast Pitch"

@@ -1,0 +1,14 @@
+{
+  "mode": "run",
+  "input_size": 1250,
+  "items_produced": 1000,
+  "items_rejected": 250,
+  "duplicates_removed": 0,
+  "priority_a_count": 25,
+  "approved_country_ratio": 0.953,
+  "runtime_minutes": 0.03,
+  "direct_cost": "$0.00",
+  "csv_path": "C:\\Users\\santh\\Desktop\\interview\\output\\leads.csv",
+  "workbook_path": "C:\\Users\\santh\\Desktop\\interview\\output\\IncuBrix_Submission_Workbook_Completed.xlsx",
+  "country_compliance": true
+}
