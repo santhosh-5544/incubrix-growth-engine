@@ -1,6 +1,6 @@
 import json
 
-with open('sample_leads.json', 'r', encoding='utf-8') as f:
+with open('all_leads.json', 'r', encoding='utf-8') as f:
     sample_leads = json.load(f)
 
 with open('priority_a_full.json', 'r', encoding='utf-8') as f:
@@ -866,8 +866,25 @@ html_template = """<!DOCTYPE html>
         <tbody id="leadsTableBody"></tbody>
       </table>
     </div>
+    
+    <div class="pagination-bar">
+      <div class="pagination-info" id="pageInfo">Showing 1–25 of 1,000 creators</div>
+      <div class="pagination-controls">
+        <label style="font-size: 0.8rem; color: var(--text-dim); margin-right: 0.25rem;">Rows:</label>
+        <select id="pageSizeSelect" class="page-size-select" onchange="changePageSize(this.value)">
+          <option value="25" selected>25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="250">250</option>
+          <option value="1000">All 1,000</option>
+        </select>
+        <button id="prevBtn" class="page-btn" onclick="prevPage()">◀ Prev</button>
+        <span id="pageIndicator" class="page-indicator">Page 1 of 40</span>
+        <button id="nextBtn" class="page-btn" onclick="nextPage()">Next ▶</button>
+      </div>
+    </div>
     <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.85rem; text-align: center;">
-      Showing interactive preview. Complete 1,000 qualified rows are available in <a href="https://github.com/santhosh-5544/incubrix-growth-engine/blob/main/output/leads.csv" target="_blank" style="color: var(--accent);">output/leads.csv</a>.
+      Full 1,000 qualified dataset with 30 columns is verified in <a href="https://github.com/santhosh-5544/incubrix-growth-engine/blob/main/output/leads.csv" target="_blank" style="color: var(--accent);">output/leads.csv</a>.
     </p>
   </section>
 
@@ -1312,30 +1329,53 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
       event.target.classList.add('active');
     }
 
-    function renderLeads(leads) {
+    let currentPage = 1;
+    let pageSize = 25;
+    let filteredLeads = leadsData;
+
+    function renderLeadsTable() {
+      const total = filteredLeads.length;
+      const totalPages = Math.ceil(total / pageSize) || 1;
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const start = (currentPage - 1) * pageSize;
+      const end = Math.min(start + pageSize, total);
+      const paged = filteredLeads.slice(start, end);
+
       const tbody = document.getElementById('leadsTableBody');
       tbody.innerHTML = '';
-      leads.forEach(lead => {
-        const tr = document.createElement('tr');
-        tr.className = 'lead-row';
-        tr.onclick = () => openModal(lead);
-        const priBadge = lead.priority === 'A' 
-          ? '<span class="badge-pill badge-pri-a">Priority A</span>'
-          : '<span class="badge-pill badge-pri-b">Priority B</span>';
-        
-        tr.innerHTML = `
-          <td><strong>${lead.lead_id}</strong></td>
-          <td><strong>${lead.name}</strong></td>
-          <td style="text-transform: capitalize;">${lead.segment}</td>
-          <td>${lead.country}</td>
-          <td>${priBadge}</td>
-          <td><span class="score-badge">${lead.score.toFixed(1)}</span></td>
-          <td><span class="channel-badge">${lead.best_channel}</span></td>
-          <td><span style="font-size: 0.775rem; color: #94A3B8;">${lead.monetization}</span></td>
-          <td><span style="font-size: 0.775rem; color: #94A3B8;">${lead.need}</span></td>
-        `;
-        tbody.appendChild(tr);
-      });
+
+      if (paged.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding: 2rem; color: var(--text-dim);">No matching creators found</td></tr>';
+      } else {
+        paged.forEach(lead => {
+          const tr = document.createElement('tr');
+          tr.className = 'lead-row';
+          tr.onclick = () => openModal(lead);
+          const priBadge = lead.priority === 'A' 
+            ? '<span class="badge-pill badge-pri-a">Priority A</span>'
+            : '<span class="badge-pill badge-pri-b">Priority B</span>';
+          
+          tr.innerHTML = `
+            <td><strong>${lead.lead_id}</strong></td>
+            <td><strong>${lead.name}</strong></td>
+            <td style="text-transform: capitalize;">${lead.segment}</td>
+            <td>${lead.country}</td>
+            <td>${priBadge}</td>
+            <td><span class="score-badge">${lead.score.toFixed(1)}</span></td>
+            <td><span class="channel-badge">${lead.best_channel}</span></td>
+            <td><span style="font-size: 0.775rem; color: #94A3B8;">${lead.monetization}</span></td>
+            <td><span style="font-size: 0.775rem; color: #94A3B8;">${lead.need}</span></td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      document.getElementById('pageInfo').innerText = `Showing ${total === 0 ? 0 : start + 1}–${end} of ${total.toLocaleString()} creators`;
+      document.getElementById('pageIndicator').innerText = `Page ${currentPage} of ${totalPages}`;
+      document.getElementById('prevBtn').disabled = currentPage <= 1;
+      document.getElementById('nextBtn').disabled = currentPage >= totalPages;
     }
 
     function filterLeads() {
@@ -1344,14 +1384,29 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
       const segment = document.getElementById('segmentFilter').value.toLowerCase();
       const priority = document.getElementById('priorityFilter').value;
 
-      const filtered = leadsData.filter(l => {
+      filteredLeads = leadsData.filter(l => {
         const matchesQ = !q || l.name.toLowerCase().includes(q) || l.lead_id.toLowerCase().includes(q) || l.need.toLowerCase().includes(q);
         const matchesCountry = !country || l.country === country;
         const matchesSegment = !segment || l.segment.toLowerCase().includes(segment);
         const matchesPriority = !priority || l.priority === priority;
         return matchesQ && matchesCountry && matchesSegment && matchesPriority;
       });
-      renderLeads(filtered);
+      currentPage = 1;
+      renderLeadsTable();
+    }
+
+    function nextPage() {
+      currentPage++;
+      renderLeadsTable();
+    }
+    function prevPage() {
+      currentPage--;
+      renderLeadsTable();
+    }
+    function changePageSize(size) {
+      pageSize = parseInt(size, 10);
+      currentPage = 1;
+      renderLeadsTable();
     }
 
     function openModal(lead) {
@@ -1437,7 +1492,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
     }
 
     // Initialize
-    renderLeads(leadsData);
+    renderLeadsTable();
     populatePriorityASelector();
   </script>
 </body>
