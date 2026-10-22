@@ -538,14 +538,25 @@ FIRST_NAMES = [
     "Alexander", "Benjamin", "Caleb", "Daniel", "Elijah", "Finn", "Gabriel", "Henry", "Isaac", "Julian",
     "Kieran", "Lucas", "Marcus", "Nathan", "Oliver", "Patrick", "Quinn", "Rowan", "Sebastian", "Tristan",
     "Althea", "Beatrice", "Clara", "Daphne", "Elena", "Fiona", "Grace", "Hannah", "Iris", "Jocelyn",
-    "Kendra", "Lydia", "Maeve", "Nora", "Ophelia", "Penelope", "Ruby", "Stella", "Talia", "Vivian"
+    "Kendra", "Lydia", "Maeve", "Nora", "Ophelia", "Penelope", "Ruby", "Stella", "Talia", "Vivian",
+    "Adrian", "Blake", "Callum", "Declan", "Ethan", "Felix", "Graham", "Harrison", "Ian", "Jasper",
+    "Liam", "Miles", "Noah", "Owen", "Philip", "Rhys", "Silas", "Theo", "Victor", "Wyatt",
+    "Alice", "Bella", "Charlotte", "Daisy", "Emma", "Freya", "Gemma", "Hazel", "Ivy", "Jasmine",
+    "Kora", "Luna", "Mia", "Nina", "Olivia", "Phoebe", "Quinnley", "Rose", "Sienna", "Tara",
+    "Arthur", "Brody", "Cole", "Damian", "Eli", "Flynn", "Gideon", "Harvey", "Isaiah", "Joel",
+    "Kyle", "Leo", "Max", "Nico", "Oscar", "Paul", "Rafael", "Sam", "Toby", "Zane"
 ]
 
 LAST_NAMES = [
     "Ashford", "Bancroft", "Calloway", "Delaney", "Eastwood", "Fairchild", "Gallagher", "Hawthorne", "Ingram", "Jennings",
     "Kingsley", "Lockwood", "Montague", "Northwood", "Oakley", "Pemberton", "Quatermain", "Radcliffe", "Stanhope", "Thackery",
     "Underwood", "Vanguard", "Waverly", "Yardley", "Zimmerman", "Sterling", "Cross", "Vance", "Mercer", "Sinclair",
-    "Carrington", "Prescott", "Winslow", "Bradford", "Kensington", "Lancaster", "Montgomery", "Barrington", "Thornton", "Wellington"
+    "Carrington", "Prescott", "Winslow", "Bradford", "Kensington", "Lancaster", "Montgomery", "Barrington", "Thornton", "Wellington",
+    "Abbott", "Beckett", "Carmichael", "Donovan", "Ellington", "Fitzgerald", "Garrison", "Holloway", "Irving", "Jeffries",
+    "Kendrick", "Langford", "Merrick", "Norfolk", "Orion", "Parrington", "Quincy", "Rowland", "Stratford", "Townsend",
+    "Vaughn", "Wakefield", "Westbrook", "Yates", "Alden", "Beaumont", "Cromwell", "Dunbar", "Everett", "Faulkner",
+    "Greyson", "Harrington", "Ivory", "Keaton", "Lockhart", "Macintosh", "Neville", "Oswald", "Penrose", "Redmond",
+    "Sutherland", "Talbot", "Vail", "Wentworth", "York", "Aldrich", "Blackwood", "Chesapeake", "Dalton", "Ellison"
 ]
 
 def generate_leads_database(target_count: int = 1000) -> List[CreatorLead]:
