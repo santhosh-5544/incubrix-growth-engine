@@ -29,3 +29,8 @@ $RECYCLE.BIN/
 # Temporary outputs
 scratch/
 legacy_exam_project/
+build_website.py
+check_incubrix.py
+parse_priority_a.py
+priority_a_data.json
+sample_leads.json

@@ -1,0 +1,59 @@
+name: IncuBrix Growth Engine CI & Quality Gate
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest openpyxl pyyaml
+
+      - name: Run Unit & Integration Test Suite
+        run: |
+          python -m pytest tests/ -v
+
+      - name: Run Self-Check Verification
+        run: |
+          python cli.py verify
+
+      - name: Run Dataset Health Audit
+        run: |
+          python cli.py stats
+
+      - name: Run 20-Lead Qualification Audit Simulation
+        run: |
+          python cli.py audit --sample 20 --seed 42
+
+      - name: Verify leads.csv Integrity
+        run: |
+          python -c "
+          import csv
+          with open('output/leads.csv', 'r', encoding='utf-8') as f:
+              reader = csv.reader(f)
+              rows = list(reader)
+          print(f'Total CSV rows (incl header): {len(rows)}')
+          assert len(rows) == 1001, f'Expected 1001 rows, got {len(rows)}'
+          assert len(rows[0]) == 30, f'Expected 30 columns, got {len(rows[0])}'
+          print('CSV Schema & Row Count: PASSED')
+          "

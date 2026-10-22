@@ -1,32 +1,45 @@
 # IncuBrix Multi-Channel Lead Generation & Outreach Engine
 
-[![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![CI Quality Gate](https://github.com/santhosh-5544/incubrix-growth-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/santhosh-5544/incubrix-growth-engine/actions)
+[![Live Showcase Portal](https://img.shields.io/badge/Live%20Portal-GitHub%20Pages-6366f1.svg?style=flat&logo=github)](https://santhosh-5544.github.io/incubrix-growth-engine/)
+[![Python Version](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/downloads/)
 [![Tests Passing](https://img.shields.io/badge/pytest-14%20passed-brightgreen.svg)]()
 [![Compliance](https://img.shields.io/badge/qualification-100%25%20compliant-success.svg)]()
 [![Leads Generated](https://img.shields.io/badge/verified%20leads-1%2C000%20qualified-orange.svg)]()
-[![License](https://img.shields.io/badge/license-Proprietary-red.svg)]()
+[![Evaluator Guide](https://img.shields.io/badge/Evaluator-Guide-emerald.svg)](docs/EVALUATION_GUIDE.md)
 
 > **2027 Graduate Hiring | Growth Engineer Assessment | Option 1: Multi-Channel Lead Generation and Outreach Engine**  
-> **Candidate**: Santhosh P (`24i435@psgtech.ac.in`) | PSG College of Technology  
-> **Goal**: An automated, compliant, production-grade engine that finds creators who need IncuBrix Creator Studio, audits their qualification, selects the optimal outreach channel, and writes hyper-personalized multi-touch sequences across 3+ channels.
+> **Candidate**: Santhosh P (`24i435@psgtech.ac.in`) | PSG College of Technology (Roll: `24I435`)  
+> **Interactive Showcase**: 👉 **[santhosh-5544.github.io/incubrix-growth-engine](https://santhosh-5544.github.io/incubrix-growth-engine/)**  
+> **Quick Links**: [Evaluator Guide](docs/EVALUATION_GUIDE.md) • [Technical Architecture](docs/ARCHITECTURE.md) • [Interview Defense Cheat Sheet](docs/LIVE_INTERVIEW_DEFENSE_CHEAT_SHEET.md) • [Launch Kit Playbook](LAUNCH_KIT.md)
 
 ---
 
-## ⚡ 1. Quickstart (One Run Command)
+## ⚡ 1. Interactive CLI & 2-Minute Quick Review
 
-To run the full end-to-end pipeline and generate all deliverables:
+The repository includes a zero-dependency interactive CLI (`cli.py`) for instantaneous dataset auditing and inspection:
 
 ```bash
-# 1. Clone / Navigate to repository
-cd c:\Users\santh\Desktop\interview
+# 1. Run automated self-check (Verifies all 7 workbook criteria)
+python cli.py verify
 
-# 2. Install dependencies
-pip install -r requirements.txt
+# 2. View live metrics & dataset health dashboard
+python cli.py stats
 
-# 3. Run the engine (ONE COMMAND)
-python main.py
+# 3. Run the official 20-lead qualification audit simulation (100% pass)
+python cli.py audit
+
+# 4. Inspect all 30 fields of any lead (Try Ali Abdaal or Lenny Rachitsky)
+python cli.py inspect LEAD-0001
+
+# 5. Launch local HTTP server and view the interactive web portal
+python cli.py serve
 ```
 
+### Full Pipeline Run (Single Command):
+```bash
+python main.py
+```
 This single command executes the full discovery, qualification audit, deduplication, scoring, Priority A sequence synthesis, exports `output/leads.csv` (1,000 qualified leads), and populates all tabs of the official Submission Workbook.
 
 ---
@@ -164,7 +177,10 @@ All runs recorded in `logs/`:
   - `LAUNCH_KIT.md` (30-day turnkey outbound playbook ready for next Monday)
 - **Seed Test Audit**:
   - `seed_test/seed_test_report.md` & `seed_test/test_logs.jsonl`
-- **Video Scripts**:
+- **Documentation & Interview Defense**:
+  - `docs/EVALUATION_GUIDE.md` (2-minute evaluation guide mapping all requirements)
+  - `docs/ARCHITECTURE.md` (Full pipeline technical design & 30-column data dictionary)
+  - `docs/LIVE_INTERVIEW_DEFENSE_CHEAT_SHEET.md` (Live interview Q&A and 5 lead tracing examples)
   - `docs/PRODUCT_WALKTHROUGH_SCRIPT.md` (Unedited 5-minute product walkthrough)
   - `docs/TECHNICAL_DEMO_SCRIPT.md` (Unedited 8-minute technical demo)
 

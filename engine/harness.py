@@ -6,7 +6,7 @@ import time
 from pathlib import Path
 from typing import Dict, Any, List
 
-from engine.config import LOG_DIR, TARGET_LEADS
+from engine.config import LOG_DIR, TARGET_LEADS, OUTPUT_DIR
 from engine.models import CreatorLead
 from engine.collector import generate_leads_database
 from engine.verifier import verify_lead, evaluate_country_distribution
@@ -30,8 +30,10 @@ if not logger.handlers:
 class EngineHarness:
     """Manages pipeline execution, failure recovery, caching, and telemetry."""
     
-    def __init__(self, target_leads: int = TARGET_LEADS):
+    def __init__(self, target_leads: int = TARGET_LEADS, output_dir: Path = OUTPUT_DIR, export: bool = True):
         self.target_leads = target_leads
+        self.output_dir = output_dir
+        self.export = export
         self.leads_cache: List[CreatorLead] = []
 
     def run_pipeline(self, mode: str = "run") -> Dict[str, Any]:
@@ -88,10 +90,13 @@ class EngineHarness:
         pa_count = generate_priority_a_outreach(enriched_leads)
         logger.info(f"Generated {pa_count} individual Priority A outreach sequences.")
         
-        # 8. Exporting leads.csv and Workbook
-        logger.info("Phase 7: Exporting official UTF-8 leads.csv and filling Submission Workbook...")
-        csv_path = export_leads_to_csv(enriched_leads)
-        wb_path = populate_submission_workbook(enriched_leads)
+        # 8. Exporting leads.csv and Workbook (if enabled)
+        csv_path = None
+        wb_path = None
+        if self.export:
+            logger.info("Phase 7: Exporting official UTF-8 leads.csv and filling Submission Workbook...")
+            csv_path = export_leads_to_csv(enriched_leads, target_path=self.output_dir / "leads.csv")
+            wb_path = populate_submission_workbook(enriched_leads, destination_path=self.output_dir / "IncuBrix_Submission_Workbook_Completed.xlsx")
         
         duration = round((time.time() - start_time) / 60, 2)
         logger.info(f"=== Pipeline completed successfully in {duration} minutes ===")
@@ -106,8 +111,8 @@ class EngineHarness:
             "approved_country_ratio": dist["approved_ratio"],
             "runtime_minutes": duration,
             "direct_cost": "$0.00",
-            "csv_path": str(csv_path),
-            "workbook_path": str(wb_path),
+            "csv_path": str(csv_path) if csv_path else "",
+            "workbook_path": str(wb_path) if wb_path else "",
             "country_compliance": dist["is_compliant"],
         }
         

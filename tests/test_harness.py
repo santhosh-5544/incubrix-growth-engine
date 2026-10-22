@@ -13,7 +13,7 @@ def test_harness_failover_recovery():
     assert summary["retries_handled"] == 3
 
 def test_harness_small_run():
-    harness = EngineHarness(target_leads=100)
+    harness = EngineHarness(target_leads=100, export=False)
     summary = harness.run_pipeline(mode="run")
     
     assert summary["mode"] == "run"
