@@ -729,6 +729,39 @@ html_content = """<!DOCTYPE html>
     .portal-section { display: none; }
     .portal-section.active { display: block; }
 
+    /* Floating Back-to-Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: linear-gradient(135deg, #4F46E5, #06B6D4);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 9999px;
+      padding: 0.6rem 1.15rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 16px rgba(79, 70, 229, 0.4);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.7);
+      transform: translateY(-2px) scale(1.04);
+    }
+
     footer {
       border-top: 1px solid var(--card-border);
       padding: 3rem 2rem;
@@ -743,7 +776,7 @@ html_content = """<!DOCTYPE html>
   <!-- Header -->
   <header>
     <div class="header-inner">
-      <div class="brand">
+      <a href="#audit" onclick="switchSection('audit'); return false;" class="brand" style="text-decoration: none; cursor: pointer;">
         <div class="brand-logo">IB</div>
         <div class="brand-info">
           <div class="brand-title">
@@ -752,11 +785,11 @@ html_content = """<!DOCTYPE html>
           </div>
           <p class="brand-sub">Lead Gen & Outreach System • Candidate: Santhosh P (24I435)</p>
         </div>
-      </div>
+      </a>
       <div class="top-actions">
         <a href="https://github.com/santhosh-5544/incubrix-growth-engine" target="_blank" class="btn btn-outline">GitHub Repo ↗</a>
-        <a href="https://github.com/santhosh-5544/incubrix-growth-engine/raw/main/output/leads.csv" class="btn btn-outline">leads.csv</a>
-        <a href="https://github.com/santhosh-5544/incubrix-growth-engine/raw/main/output/IncuBrix_Submission_Workbook_Completed.xlsx" class="btn btn-accent">Workbook (.xlsx)</a>
+        <a href="https://github.com/santhosh-5544/incubrix-growth-engine/raw/main/output/leads.csv" class="btn btn-outline" download>leads.csv ⬇</a>
+        <a href="https://github.com/santhosh-5544/incubrix-growth-engine/raw/main/output/IncuBrix_Submission_Workbook_Completed.xlsx" class="btn btn-accent" download>Workbook (.xlsx) ⬇</a>
       </div>
     </div>
   </header>
@@ -764,17 +797,17 @@ html_content = """<!DOCTYPE html>
   <!-- Master Navigation Tabs Dock -->
   <div class="master-nav-wrapper">
     <div class="master-nav">
-      <button class="nav-tab active" onclick="switchSection('audit')">✓ Compliance</button>
-      <button class="nav-tab" onclick="switchSection('leads')">👥 1,000 Leads</button>
-      <button class="nav-tab" onclick="switchSection('analytics')">📊 Analytics</button>
-      <button class="nav-tab" onclick="switchSection('roi')">🧮 ROI Calculator</button>
-      <button class="nav-tab" onclick="switchSection('insights')">💡 Product Audit</button>
-      <button class="nav-tab" onclick="switchSection('priority_a')">⭐ Priority A (25)</button>
-      <button class="nav-tab" onclick="switchSection('sequences')">✉️ Sequences</button>
-      <button class="nav-tab" onclick="switchSection('seed_test')">🧪 Seed Test</button>
-      <button class="nav-tab" onclick="switchSection('engine')">⚙️ Telemetry</button>
-      <button class="nav-tab" onclick="switchSection('launch')">🚀 Launch Kit</button>
-      <button class="nav-tab" onclick="switchSection('videos')">🎬 Video Prep</button>
+      <button class="nav-tab active" data-section="audit" onclick="switchSection('audit')">✓ Compliance</button>
+      <button class="nav-tab" data-section="leads" onclick="switchSection('leads')">👥 1,000 Leads</button>
+      <button class="nav-tab" data-section="analytics" onclick="switchSection('analytics')">📊 Analytics</button>
+      <button class="nav-tab" data-section="roi" onclick="switchSection('roi')">🧮 ROI Calculator</button>
+      <button class="nav-tab" data-section="insights" onclick="switchSection('insights')">💡 Product Audit</button>
+      <button class="nav-tab" data-section="priority_a" onclick="switchSection('priority_a')">⭐ Priority A (25)</button>
+      <button class="nav-tab" data-section="sequences" onclick="switchSection('sequences')">✉️ Sequences</button>
+      <button class="nav-tab" data-section="seed_test" onclick="switchSection('seed_test')">🧪 Seed Test</button>
+      <button class="nav-tab" data-section="engine" onclick="switchSection('engine')">⚙️ Telemetry</button>
+      <button class="nav-tab" data-section="launch" onclick="switchSection('launch')">🚀 Launch Kit</button>
+      <button class="nav-tab" data-section="videos" onclick="switchSection('videos')">🎬 Video Prep</button>
     </div>
   </div>
 
@@ -801,24 +834,24 @@ html_content = """<!DOCTYPE html>
 
   <!-- Key Metrics -->
   <div class="stats-grid">
-    <div class="stat-card emerald">
+    <div class="stat-card emerald" onclick="switchSection('leads')" style="cursor: pointer;" title="Click to view 1,000 Leads">
       <div class="stat-val">1,000</div>
-      <div class="stat-label">Qualified Leads</div>
+      <div class="stat-label">Qualified Leads →</div>
       <div class="stat-desc">Zero guessed emails or fan pages. 100% pass 30d activity & monetization checks.</div>
     </div>
-    <div class="stat-card cyan">
+    <div class="stat-card cyan" onclick="switchSection('analytics')" style="cursor: pointer;" title="Click to view Analytics">
       <div class="stat-val">95.3%</div>
-      <div class="stat-label">Approved Country Mix</div>
+      <div class="stat-label">Approved Country Mix →</div>
       <div class="stat-desc">7 Tier-1 countries. US capped at 50.5% (strictly &le; 60% requirement).</div>
     </div>
-    <div class="stat-card">
+    <div class="stat-card" onclick="switchSection('sequences')" style="cursor: pointer;" title="Click to view Sequences">
       <div class="stat-val">4 Channels</div>
-      <div class="stat-label">Reachable Contact</div>
+      <div class="stat-label">Reachable Contact →</div>
       <div class="stat-desc">Verified Email, LinkedIn, X, and Instagram handles published by creators.</div>
     </div>
-    <div class="stat-card amber">
+    <div class="stat-card amber" onclick="switchSection('roi')" style="cursor: pointer;" title="Click to simulate ROI">
       <div class="stat-val">$920/mo</div>
-      <div class="stat-label">Projected Net MRR</div>
+      <div class="stat-label">Projected Net MRR →</div>
       <div class="stat-desc">From 30-day turnkey outreach plan with an agile $262/mo tooling budget.</div>
     </div>
   </div>
@@ -1613,17 +1646,60 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
     let filteredLeads = leadsData;
     let chartsInitialized = false;
 
-    function switchSection(sectionId) {
+    function switchSection(sectionId, shouldScroll = true) {
       document.querySelectorAll('.portal-section').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
       
       const target = document.getElementById('section-' + sectionId);
-      if (target) target.classList.add('active');
-      event.target.classList.add('active');
+      if (target) {
+        target.classList.add('active');
+      }
 
+      // Activate matching nav tab button
+      const activeBtn = document.querySelector(`.nav-tab[data-section="${sectionId}"]`) || 
+                        document.querySelector(`.nav-tab[onclick*="'${sectionId}'"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+
+      // Update URL in browser header cleanly (e.g. /#leads, /#analytics)
+      try {
+        if (window.location.hash !== '#' + sectionId) {
+          if (window.history && window.history.pushState) {
+            window.history.pushState(null, '', '#' + sectionId);
+          } else {
+            window.location.hash = sectionId;
+          }
+        }
+      } catch (err) {
+        console.warn('URL hash update:', err);
+      }
+
+      // Smooth scroll back to top of the page so content starts cleanly from the top
+      if (shouldScroll) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+
+      // Initialize analytics charts on demand
       if (sectionId === 'analytics' && !chartsInitialized) {
-        initCharts();
-        chartsInitialized = true;
+        setTimeout(() => {
+          initCharts();
+          chartsInitialized = true;
+        }, 50);
+      }
+    }
+
+    function scrollToTableTop() {
+      const el = document.querySelector('.table-controls');
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        window.scrollTo({
+          top: window.pageYOffset + rect.top - 120,
+          behavior: 'smooth'
+        });
       }
     }
 
@@ -1692,15 +1768,18 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
     function nextPage() {
       currentPage++;
       renderLeadsTable();
+      scrollToTableTop();
     }
     function prevPage() {
       currentPage--;
       renderLeadsTable();
+      scrollToTableTop();
     }
     function changePageSize(size) {
       pageSize = parseInt(size, 10);
       currentPage = 1;
       renderLeadsTable();
+      scrollToTableTop();
     }
 
     function openModal(lead) {
@@ -1969,11 +2048,51 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
       });
     }
 
+    // Deep linking & URL hash listener
+    function handleHashRouting() {
+      const hash = (window.location.hash || '').replace('#', '').trim();
+      const validSections = ['audit', 'leads', 'analytics', 'roi', 'insights', 'priority_a', 'sequences', 'seed_test', 'engine', 'launch', 'videos'];
+      if (hash && validSections.includes(hash)) {
+        switchSection(hash, false);
+      } else {
+        switchSection('audit', false);
+      }
+    }
+
+    window.addEventListener('popstate', () => {
+      const hash = (window.location.hash || '').replace('#', '').trim() || 'audit';
+      const validSections = ['audit', 'leads', 'analytics', 'roi', 'insights', 'priority_a', 'sequences', 'seed_test', 'engine', 'launch', 'videos'];
+      if (validSections.includes(hash)) {
+        switchSection(hash, true);
+      } else {
+        switchSection('audit', true);
+      }
+    });
+
+    // Scroll listener for floating Back-to-Top button
+    window.addEventListener('scroll', () => {
+      const btt = document.getElementById('backToTop');
+      if (btt) {
+        if (window.scrollY > 300) {
+          btt.classList.add('show');
+        } else {
+          btt.classList.remove('show');
+        }
+      }
+    });
+
     // Initialize
     renderLeadsTable();
     populatePriorityASelector();
     calculateROI();
+    handleHashRouting();
   </script>
+
+  <!-- Floating Back to Top Button -->
+  <button id="backToTop" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
+    <span style="font-size: 1.1rem; line-height: 1;">↑</span>
+    <span>Top</span>
+  </button>
 </body>
 </html>"""
 
