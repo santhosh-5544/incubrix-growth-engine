@@ -96,9 +96,12 @@ def score_and_prioritize_leads(leads: List[CreatorLead]) -> List[CreatorLead]:
         elif lead_num <= 250:
             lead.priority = "B"
             lead.lead_score = round(92.0 - ((lead_num % 100) * 0.08), 1)
-        else:
+        elif lead_num <= 750:
             lead.priority = "C"
             lead.lead_score = round(84.0 - ((lead_num % 200) * 0.06), 1)
+        else:
+            lead.priority = "D"
+            lead.lead_score = round(76.0 - ((lead_num % 250) * 0.04), 1)
 
     # Re-sort strictly by lead_id ascending (LEAD-0001 to LEAD-1000)
     leads.sort(key=lambda x: int(x.lead_id.split("-")[1]) if "-" in x.lead_id else 0)

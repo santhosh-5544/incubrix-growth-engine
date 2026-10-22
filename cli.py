@@ -123,9 +123,10 @@ def cmd_stats(args):
         print(f"     {ch:14} : {cnt:4} leads ({pct:5.1f}%)")
 
     print(f"\n{BOLD}4. PRIORITY & LEAD SCORE TIERS{RESET}")
-    print(f"     Priority A (Custom 3-touch kit) : {BOLD}{YELLOW}{priority_counts.get('A', 0)}{RESET}")
-    print(f"     Priority B (High fit, automated): {priority_counts.get('B', 0)}")
-    print(f"     Priority C (Qualified nurture)  : {priority_counts.get('C', 0)}")
+    print(f"     Priority A (VIP Enterprise 3-touch kit) : {BOLD}{YELLOW}{priority_counts.get('A', 0)}{RESET}")
+    print(f"     Priority B (High-growth scale tier)     : {priority_counts.get('B', 0)}")
+    print(f"     Priority C (Mid-tier velocity tier)     : {priority_counts.get('C', 0)}")
+    print(f"     Priority D (Emerging qualified nurture) : {priority_counts.get('D', 0)}")
     print(f"     Score Distribution: 90-100: {score_bins['90-100']} | 80-89: {score_bins['80-89']} | 70-79: {score_bins['70-79']} | 60-69: {score_bins['60-69']}")
     print(f"{CYAN}======================================================================{RESET}\n")
 

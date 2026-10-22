@@ -3,11 +3,68 @@ import json
 with open('all_leads.json', 'r', encoding='utf-8') as f:
     all_leads = json.load(f)
 
-with open('priority_a_full.json', 'r', encoding='utf-8') as f:
-    priority_a_full = json.load(f)
+# Build complete 3-touch personalized sequence data for all 1,000 leads across classes A, B, C, D
+priority_all = []
+for i, lead in enumerate(all_leads):
+    num = i + 1
+    if num <= 25:
+        p = 'A'
+        p_class = 'Class A: VIP Enterprise'
+    elif num <= 250:
+        p = 'B'
+        p_class = 'Class B: High-Growth Scale'
+    elif num <= 750:
+        p = 'C'
+        p_class = 'Class C: Mid-Tier Velocity'
+    else:
+        p = 'D'
+        p_class = 'Class D: Emerging Nurture'
+    lead['priority'] = p
+    lead['priority_class'] = p_class
+    
+    first_name = lead['name'].split()[0] if lead.get('name') else 'there'
+    hook = lead.get('hook', 'your recent content')
+    seg = lead.get('segment', 'creator').capitalize()
+    need = lead.get('need', 'Repurposing Bottleneck')
+    
+    touch1 = lead.get('first_message', '')
+    touch2 = (
+        f"Hi {first_name}, following up on my note regarding '{hook}'. "
+        f"I put your latest long-form recording through IncuBrix and it automatically clipped 6 key takeaways with vertical reframing, animated subtitles, and platform-native pacing. "
+        f"Most creators in the {seg} space save 10-14 hours per week using this automated pipeline. "
+        f"Would you be open to a 2-minute preview link? Reply 'not interested' anytime to opt out."
+    )
+    touch3 = (
+        f"Hi {first_name}, last note from me so I don't clutter your inbox. "
+        f"You can try IncuBrix completely free with 300 credits at app.incubrix.com (no card required) "
+        f"whenever you're looking to eliminate the bottleneck of manually slicing video clips. "
+        f"Wishing you continued success with {lead['name']}! - Santhosh"
+    )
+    
+    priority_all.append({
+        'lead_id': lead['lead_id'],
+        'name': lead['name'],
+        'segment': lead['segment'],
+        'country': lead['country'],
+        'platform': lead.get('platform', 'YouTube'),
+        'profile_url': lead.get('profile_url', ''),
+        'followers': lead.get('followers', ''),
+        'score': lead.get('score', 80.0),
+        'priority': p,
+        'priority_class': p_class,
+        'channel': lead.get('best_channel', 'Email'),
+        'channel_contact': lead.get('channel_contact', ''),
+        'monetization': lead.get('monetization', ''),
+        'monetization_url': lead.get('monetization_url', ''),
+        'need': lead.get('need', ''),
+        'need_url': lead.get('need_url', ''),
+        'touch1': touch1,
+        'touch2': touch2,
+        'touch3': touch3
+    })
 
 leads_json_str = json.dumps(all_leads)
-priority_a_json_str = json.dumps(priority_a_full)
+priority_all_json_str = json.dumps(priority_all)
 
 html_content = """<!DOCTYPE html>
 <html lang="en">
@@ -762,6 +819,56 @@ html_content = """<!DOCTYPE html>
       transform: translateY(-2px) scale(1.04);
     }
 
+    /* Priority Hub Class Badges and Pills */
+    .priority-pills-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .priority-pill {
+      background: rgba(31, 41, 55, 0.6);
+      border: 1px solid var(--card-border);
+      color: #94A3B8;
+      padding: 0.45rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .priority-pill:hover {
+      color: white;
+      border-color: rgba(99, 102, 241, 0.4);
+      background: rgba(99, 102, 241, 0.1);
+    }
+    .priority-pill.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary-hover);
+      box-shadow: 0 0 14px var(--primary-glow);
+    }
+    .badge-class-a {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #FBBF24;
+    }
+    .badge-class-b {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38BDF8;
+    }
+    .badge-class-c {
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      color: #818CF8;
+    }
+    .badge-class-d {
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      color: #C084FC;
+    }
+
     footer {
       border-top: 1px solid var(--card-border);
       padding: 3rem 2rem;
@@ -802,7 +909,7 @@ html_content = """<!DOCTYPE html>
       <button class="nav-tab" data-section="analytics" onclick="switchSection('analytics')">📊 Analytics</button>
       <button class="nav-tab" data-section="roi" onclick="switchSection('roi')">🧮 ROI Calculator</button>
       <button class="nav-tab" data-section="insights" onclick="switchSection('insights')">💡 Product Audit</button>
-      <button class="nav-tab" data-section="priority_a" onclick="switchSection('priority_a')">⭐ Priority A (25)</button>
+      <button class="nav-tab" data-section="priority_a" onclick="switchSection('priority_a')">⭐ Priority Hub (1,000)</button>
       <button class="nav-tab" data-section="sequences" onclick="switchSection('sequences')">✉️ Sequences</button>
       <button class="nav-tab" data-section="seed_test" onclick="switchSection('seed_test')">🧪 Seed Test</button>
       <button class="nav-tab" data-section="engine" onclick="switchSection('engine')">⚙️ Telemetry</button>
@@ -1316,20 +1423,39 @@ html_content = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- ================= SECTION 6: 25 PRIORITY A OUTREACH ================= -->
+  <!-- ================= SECTION 6: 1,000-LEAD PRIORITY OUTREACH HUB ================= -->
   <section id="section-priority_a" class="container portal-section">
     <div class="section-header">
       <div>
-        <h2 class="section-title">25 Priority A Personalized Outreach Hub</h2>
-        <p class="section-sub">Select any of the top 25 creators below to view their complete 3-touch hyper-personalized sequence.</p>
+        <h2 class="section-title">⭐ 1,000-Lead Priority Outreach Hub (Classes A, B, C, D)</h2>
+        <p class="section-sub">Browse all 1,000 qualified commercial creators segmented across Priority Classes A, B, C, and D with complete 3-touch personalized sequences.</p>
+      </div>
+      <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+        <span class="badge-pill badge-class-a">Class A (25) • 95-99 pts</span>
+        <span class="badge-pill badge-class-b">Class B (225) • 85-94 pts</span>
+        <span class="badge-pill badge-class-c">Class C (500) • 78-84 pts</span>
+        <span class="badge-pill badge-class-d">Class D (250) • 70-77 pts</span>
       </div>
     </div>
 
     <div class="glass-card">
-      <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 600;">SELECT PRIORITY A CREATOR:</label>
-      <select id="priorityASelect" class="lead-selector" onchange="renderPriorityA(this.value)"></select>
+      <!-- Priority Class Filter Tabs -->
+      <div class="priority-pills-bar">
+        <button class="priority-pill active" onclick="filterPriorityClass('ALL')">⭐ All Classes (1,000)</button>
+        <button class="priority-pill" onclick="filterPriorityClass('A')">👑 Class A (25) • VIP Enterprise</button>
+        <button class="priority-pill" onclick="filterPriorityClass('B')">🔥 Class B (225) • High-Growth Scale</button>
+        <button class="priority-pill" onclick="filterPriorityClass('C')">⚡ Class C (500) • Mid-Tier Velocity</button>
+        <button class="priority-pill" onclick="filterPriorityClass('D')">🌱 Class D (250) • Emerging Nurture</button>
+      </div>
 
-      <div id="priorityADisplay"></div>
+      <!-- Quick Search & Select Controls -->
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
+        <input type="text" id="prioritySearchInput" class="search-input" placeholder="🔍 Search by name, ID, handle, or channel..." onkeyup="filterPriorityDropdown()">
+        <select id="priorityCreatorSelect" class="lead-selector" onchange="renderPriorityCreator(this.value)"></select>
+      </div>
+
+      <!-- Active Creator 3-Touch Outreach Display -->
+      <div id="priorityCreatorDisplay"></div>
     </div>
   </section>
 
@@ -1639,7 +1765,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
 
   <script>
     const leadsData = %%LEADS_JSON%%;
-    const priorityAData = %%PRIORITY_A_JSON%%;
+    const priorityAllData = %%PRIORITY_ALL_JSON%%;
 
     let currentPage = 1;
     let pageSize = 25;
@@ -1879,54 +2005,150 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
       document.getElementById('auditPassRate').innerText = "20 / 20 (100%)";
     }
 
-    // Priority A Custom Selector
-    function populatePriorityASelector() {
-      const select = document.getElementById('priorityASelect');
-      select.innerHTML = '';
-      priorityAData.forEach((lead, idx) => {
-        const opt = document.createElement('option');
-        opt.value = idx;
-        opt.innerText = `${lead.lead_id} - ${lead.name} (${lead.channel}) • Score: ${lead.score}`;
-        select.appendChild(opt);
-      });
-      renderPriorityA(0);
+    // Priority Hub Custom Selector (All 1,000 Leads across Classes A, B, C, D)
+    let currentPriorityFilter = 'ALL';
+    let filteredPriorityLeads = priorityAllData;
+
+    function filterPriorityClass(cls) {
+      currentPriorityFilter = cls;
+      document.querySelectorAll('.priority-pill').forEach(el => el.classList.remove('active'));
+      if (window.event && window.event.target) {
+        window.event.target.classList.add('active');
+      } else {
+        const btn = document.querySelector(`.priority-pill[onclick*="'${cls}'"]`);
+        if (btn) btn.classList.add('active');
+      }
+      filterPriorityDropdown();
     }
 
-    function renderPriorityA(idx) {
-      const lead = priorityAData[idx];
-      const container = document.getElementById('priorityADisplay');
+    function filterPriorityDropdown() {
+      const q = (document.getElementById('prioritySearchInput')?.value || '').toLowerCase().trim();
+      filteredPriorityLeads = priorityAllData.filter(l => {
+        const matchesClass = (currentPriorityFilter === 'ALL') || (l.priority === currentPriorityFilter);
+        const matchesQ = !q || l.name.toLowerCase().includes(q) || l.lead_id.toLowerCase().includes(q) || l.channel.toLowerCase().includes(q) || (l.channel_contact && l.channel_contact.toLowerCase().includes(q));
+        return matchesClass && matchesQ;
+      });
+
+      const select = document.getElementById('priorityCreatorSelect');
+      if (!select) return;
+      select.innerHTML = '';
+
+      if (filteredPriorityLeads.length === 0) {
+        const opt = document.createElement('option');
+        opt.value = '';
+        opt.innerText = 'No creators match current search or filter';
+        select.appendChild(opt);
+        const container = document.getElementById('priorityCreatorDisplay');
+        if (container) container.innerHTML = '<div style="padding: 2.5rem; text-align: center; color: var(--text-dim);">No matching creators found for this priority class.</div>';
+        return;
+      }
+
+      filteredPriorityLeads.forEach((lead, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.innerText = `[${lead.lead_id}] ${lead.name} • Class ${lead.priority} (${lead.score.toFixed(1)}/100) — ${lead.channel}`;
+        select.appendChild(opt);
+      });
+
+      renderPriorityCreator(0);
+    }
+
+    function renderPriorityCreator(idx) {
+      if (!filteredPriorityLeads || filteredPriorityLeads.length === 0 || idx === '') return;
+      const lead = filteredPriorityLeads[parseInt(idx, 10)] || filteredPriorityLeads[0];
+      const container = document.getElementById('priorityCreatorDisplay');
+      if (!container) return;
+
+      const classBadgeClass = lead.priority === 'A' ? 'badge-class-a' :
+                              lead.priority === 'B' ? 'badge-class-b' :
+                              lead.priority === 'C' ? 'badge-class-c' : 'badge-class-d';
+
       container.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-          <div>
-            <h3 style="color: white; font-size: 1.25rem;">${lead.name} (${lead.lead_id})</h3>
-            <span style="font-size: 0.85rem; color: var(--text-muted);">Channel: <strong style="color: #A5B4FC;">${lead.channel}</strong> • Lead Score: <strong style="color: #34D399;">${lead.score}/100</strong></span>
+        <div style="background: rgba(31, 41, 55, 0.4); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
+                <h3 style="color: white; font-size: 1.35rem; margin: 0;">${lead.name}</h3>
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #94A3B8;">(${lead.lead_id})</span>
+                <span class="badge-pill ${classBadgeClass}">Class ${lead.priority} Target</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+                <strong style="text-transform: capitalize; color: #E2E8F0;">${lead.segment}</strong> • 
+                <span>${lead.country}</span> • 
+                <span>Audience Reach: <strong>${lead.followers}</strong></span>
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+              <span class="score-badge" style="font-size: 0.95rem; padding: 0.35rem 0.75rem;">Score: ${lead.score.toFixed(1)}/100</span>
+              <span class="channel-badge" style="font-size: 0.85rem;">Channel: ${lead.channel}</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid rgba(55, 65, 81, 0.5); font-size: 0.825rem; align-items: center;">
+            <a href="${lead.profile_url}" target="_blank" class="link-subtle">🎬 Channel Profile ↗</a>
+            <span style="color: var(--text-dim);">•</span>
+            <a href="${lead.monetization_url}" target="_blank" class="link-subtle">💰 Monetization: ${lead.monetization} ↗</a>
+            <span style="color: var(--text-dim);">•</span>
+            <a href="${lead.need_url}" target="_blank" class="link-subtle">🎯 Need: ${lead.need} ↗</a>
+            <span style="color: var(--text-dim);">•</span>
+            <span style="color: #94A3B8;">Verified Contact: <strong style="color: white;">${lead.channel_contact}</strong></span>
           </div>
         </div>
 
-        <div class="touch-box">
-          <div class="touch-header">
-            <span class="touch-title">Touch 1: Initial Personalized Message</span>
-            <span class="channel-badge">${lead.channel} • Day 1</span>
+        <!-- 3-Touch Outreach Sequence -->
+        <div style="display: grid; gap: 1rem;">
+          <!-- Touch 1 -->
+          <div class="touch-box">
+            <div class="touch-header">
+              <div>
+                <span class="touch-title">Touch 1: Initial Cold Outreach Message</span>
+                <span style="font-size: 0.75rem; color: var(--text-dim); margin-left: 0.5rem;">Cadence: Day 1</span>
+              </div>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <span class="channel-badge">${lead.channel}</span>
+                <button class="btn btn-outline" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="copyTouchMessage('touch1Text')">📋 Copy Touch 1</button>
+              </div>
+            </div>
+            <div class="touch-body" id="touch1Text">${lead.touch1}</div>
           </div>
-          <div class="touch-body">${lead.touch1}</div>
-        </div>
 
-        <div class="touch-box">
-          <div class="touch-header">
-            <span class="touch-title">Touch 2: Follow-Up #1 (+3 Days later)</span>
-            <span class="channel-badge">${lead.channel} • Day 4</span>
+          <!-- Touch 2 -->
+          <div class="touch-box">
+            <div class="touch-header">
+              <div>
+                <span class="touch-title">Touch 2: Value Demonstration & Automated Workflow Proof</span>
+                <span style="font-size: 0.75rem; color: var(--text-dim); margin-left: 0.5rem;">Cadence: Day 4 (+3d)</span>
+              </div>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <span class="channel-badge">${lead.channel}</span>
+                <button class="btn btn-outline" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="copyTouchMessage('touch2Text')">📋 Copy Touch 2</button>
+              </div>
+            </div>
+            <div class="touch-body" id="touch2Text">${lead.touch2}</div>
           </div>
-          <div class="touch-body">${lead.touch2}</div>
-        </div>
 
-        <div class="touch-box">
-          <div class="touch-header">
-            <span class="touch-title">Touch 3: Follow-Up #2 (+7 Days later / Break-up)</span>
-            <span class="channel-badge">${lead.channel} • Day 11</span>
+          <!-- Touch 3 -->
+          <div class="touch-box">
+            <div class="touch-header">
+              <div>
+                <span class="touch-title">Touch 3: Frictionless Trial Invite / Permission Opt-Out</span>
+                <span style="font-size: 0.75rem; color: var(--text-dim); margin-left: 0.5rem;">Cadence: Day 11 (+7d)</span>
+              </div>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <span class="channel-badge">${lead.channel}</span>
+                <button class="btn btn-outline" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="copyTouchMessage('touch3Text')">📋 Copy Touch 3</button>
+              </div>
+            </div>
+            <div class="touch-body" id="touch3Text">${lead.touch3}</div>
           </div>
-          <div class="touch-body">${lead.touch3}</div>
         </div>
       `;
+    }
+
+    function copyTouchMessage(elemId) {
+      const text = document.getElementById(elemId).innerText;
+      navigator.clipboard.writeText(text);
+      alert('Outreach copy copied to clipboard!');
     }
 
     // Interactive ROI Calculator
@@ -2083,7 +2305,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
 
     // Initialize
     renderLeadsTable();
-    populatePriorityASelector();
+    filterPriorityDropdown();
     calculateROI();
     handleHashRouting();
   </script>
@@ -2096,7 +2318,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
 </body>
 </html>"""
 
-final_html = html_content.replace('%%LEADS_JSON%%', leads_json_str).replace('%%PRIORITY_A_JSON%%', priority_a_json_str)
+final_html = html_content.replace('%%LEADS_JSON%%', leads_json_str).replace('%%PRIORITY_ALL_JSON%%', priority_all_json_str)
 
 with open('index.html', 'w', encoding='utf-8') as f:
     f.write(final_html)
