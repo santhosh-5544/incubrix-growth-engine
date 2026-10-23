@@ -1980,15 +1980,15 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
         <div>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
             <span class="badge-pill" style="background: rgba(56, 189, 248, 0.12); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35);">Video 01 (5 Min Max)</span>
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #34D399; font-weight: 700;">Live Screencast • 2.5 Min</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #34D399; font-weight: 700;">Candidate Recording • 3.4 Min</span>
           </div>
-          <h3 style="color: white; margin-bottom: 0.25rem;">Live Portal Walkthrough & Product Audit</h3>
+          <h3 style="color: white; margin-bottom: 0.25rem;">Product Walkthrough & Growth Audit</h3>
           <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
             Candidate: <strong>Santhosh P</strong> • Script: <a href="https://github.com/santhosh-5544/incubrix-growth-engine/blob/main/docs/PRODUCT_WALKTHROUGH_SCRIPT.md" target="_blank" class="link-subtle">docs/PRODUCT_WALKTHROUGH_SCRIPT.md ↗</a>
           </p>
 
-          <!-- Embedded Video Player -->
-          <div class="video-card-player">
+          <!-- Embedded Video Player Container -->
+          <div id="videoContainer1" class="video-card-player">
             <video id="videoPlayer1" controls playsinline preload="metadata" poster="videos/poster_video1.png">
               <source src="videos/video_01_product_walkthrough.mp4" type="video/mp4">
               Your browser does not support the video tag.
@@ -1999,29 +1999,47 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
           <div class="video-controls-bar">
             <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
               <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="playPauseVideo('videoPlayer1')">⏯️ Play / Pause</button>
-              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="openTheater('videos/video_01_product_walkthrough.mp4', 'Video 01: Live Portal Walkthrough & Product Audit')">⛶ Theater Mode</button>
+              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="openTheater('videos/video_01_product_walkthrough.mp4', 'Video 01: Product Walkthrough & Growth Audit')">⛶ Theater Mode</button>
             </div>
-            <a href="videos/video_01_product_walkthrough.mp4" download class="btn btn-download" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">⬇️ Download MP4</a>
+            <a href="videos/video_01_product_walkthrough.mp4" download class="btn btn-download" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">⬇️ Download MP4 (18 MB)</a>
+          </div>
+
+          <!-- Paste External Video Link Feature -->
+          <div style="background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 0.85rem; margin-bottom: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
+              <label for="customVideoInput1" style="font-size: 0.775rem; color: #34D399; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">
+                🔗 Paste Video Link to Play:
+              </label>
+              <span style="font-size: 0.7rem; color: var(--text-dim);">Loom, YouTube, Drive, or MP4 URL</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+              <input type="url" id="customVideoInput1" class="search-input" placeholder="Paste Loom link (e.g. loom.com/share/...) or YouTube / MP4 URL" style="flex: 1; min-width: 220px; padding: 0.45rem 0.85rem; font-size: 0.825rem;">
+              <button class="btn btn-accent" style="padding: 0.45rem 0.95rem; font-size: 0.8rem;" onclick="loadExternalVideo(1)">▶ Load & Play</button>
+              <button class="btn btn-outline" style="padding: 0.45rem 0.75rem; font-size: 0.8rem;" onclick="resetToLocalVideo(1)" title="Reset to candidate uploaded video">↺ Reset</button>
+            </div>
+            <div id="videoSourceStatus1" style="font-size: 0.725rem; color: var(--text-dim); margin-top: 0.4rem;">
+              Current Source: <span style="color: #34D399; font-weight: 600;">Uploaded Candidate Video (Local MP4)</span>
+            </div>
           </div>
 
           <!-- Chapter Seek Buttons -->
-          <div style="font-size: 0.725rem; color: var(--text-dim); margin-bottom: 0.35rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Scrub to Live Chapter:</div>
+          <div style="font-size: 0.725rem; color: var(--text-dim); margin-bottom: 0.35rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Scrub to Chapter:</div>
           <div class="chapter-pills-wrap">
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 0)">[00:00] Live Portal Tour</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 23.1)">[00:23] Leads & Dossier Modal</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 48.6)">[00:48] Credit & Analytics</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 74.1)">[01:14] Live ROI Simulator</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 103.3)">[01:43] 01_INSIGHT Audit</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 126.6)">[02:06] Priority Hub</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 0)">[00:00] Intro & Brand</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 35)">[00:35] Repurposing & Subtitles</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 75)">[01:15] Credit Economy & Pricing</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 110)">[01:50] Omni-Channel Hub</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 145)">[02:25] 3 GTM Opportunities</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 175)">[02:55] Unit Economics</button>
           </div>
 
           <!-- Script Line Items -->
           <div style="font-size: 0.825rem; color: #CBD5E1; line-height: 1.6; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.75rem;">
-            <div>• <strong>0:00 - 0:28:</strong> Live portal inspection, candidate pill, and clean stat cards.</div>
-            <div>• <strong>0:28 - 1:02:</strong> 02_LEADS explorer search and full 30-field dossier modal.</div>
-            <div>• <strong>1:02 - 1:34:</strong> Pricing credit rollover policy and interactive Chart.js graphs.</div>
-            <div>• <strong>1:34 - 2:10:</strong> Interactive ROI calculator moving sliders in real time.</div>
-            <div>• <strong>2:10 - 3:20:</strong> 01_INSIGHT audit and 1,000-Lead Priority Hub sequences.</div>
+            <div>• <strong>0:00 - 0:40:</strong> IncuBrix Creator OS overview & core value proposition.</div>
+            <div>• <strong>0:40 - 1:30:</strong> Obs 1: Video clip repurposing & kinetic karaoke subtitles.</div>
+            <div>• <strong>1:30 - 2:20:</strong> Obs 2: Credit economy & 1-year rollover policy vs 30d Opus Clip.</div>
+            <div>• <strong>2:20 - 3:45:</strong> Obs 3, 4, 5: Omni-channel syndication, voice dubbing, & frictionless TTV.</div>
+            <div>• <strong>3:45 - 5:00:</strong> 3 Quantified 30-Day GTM opportunities (Podcasters, Editors, Course creators).</div>
           </div>
         </div>
       </div>
@@ -2031,15 +2049,15 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
         <div>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
             <span class="badge-pill" style="background: rgba(99, 102, 241, 0.12); color: #818CF8; border: 1px solid rgba(99, 102, 241, 0.35);">Video 02 (8 Min Max)</span>
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #34D399; font-weight: 700;">Live Screencast • 2.3 Min</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #34D399; font-weight: 700;">Candidate Recording • 5.2 Min</span>
           </div>
-          <h3 style="color: white; margin-bottom: 0.25rem;">Live Technical Demo & Architecture Defense</h3>
+          <h3 style="color: white; margin-bottom: 0.25rem;">Technical Demo & Engine Defense</h3>
           <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
             Candidate: <strong>Santhosh P</strong> • Script: <a href="https://github.com/santhosh-5544/incubrix-growth-engine/blob/main/docs/TECHNICAL_DEMO_SCRIPT.md" target="_blank" class="link-subtle">docs/TECHNICAL_DEMO_SCRIPT.md ↗</a>
           </p>
 
-          <!-- Embedded Video Player -->
-          <div class="video-card-player">
+          <!-- Embedded Video Player Container -->
+          <div id="videoContainer2" class="video-card-player">
             <video id="videoPlayer2" controls playsinline preload="metadata" poster="videos/poster_video2.png">
               <source src="videos/video_02_technical_demo.mp4" type="video/mp4">
               Your browser does not support the video tag.
@@ -2050,29 +2068,47 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
           <div class="video-controls-bar">
             <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
               <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="playPauseVideo('videoPlayer2')">⏯️ Play / Pause</button>
-              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="openTheater('videos/video_02_technical_demo.mp4', 'Video 02: Live Technical Demo & Architecture Defense')">⛶ Theater Mode</button>
+              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="openTheater('videos/video_02_technical_demo.mp4', 'Video 02: Technical Demo & Engine Defense')">⛶ Theater Mode</button>
             </div>
-            <a href="videos/video_02_technical_demo.mp4" download class="btn btn-download" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">⬇️ Download MP4</a>
+            <a href="videos/video_02_technical_demo.mp4" download class="btn btn-download" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">⬇️ Download MP4 (24 MB)</a>
+          </div>
+
+          <!-- Paste External Video Link Feature -->
+          <div style="background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 0.85rem; margin-bottom: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
+              <label for="customVideoInput2" style="font-size: 0.775rem; color: #34D399; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">
+                🔗 Paste Video Link to Play:
+              </label>
+              <span style="font-size: 0.7rem; color: var(--text-dim);">Loom, YouTube, Drive, or MP4 URL</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+              <input type="url" id="customVideoInput2" class="search-input" placeholder="Paste Loom link (e.g. loom.com/share/...) or YouTube / MP4 URL" style="flex: 1; min-width: 220px; padding: 0.45rem 0.85rem; font-size: 0.825rem;">
+              <button class="btn btn-accent" style="padding: 0.45rem 0.95rem; font-size: 0.8rem;" onclick="loadExternalVideo(2)">▶ Load & Play</button>
+              <button class="btn btn-outline" style="padding: 0.45rem 0.75rem; font-size: 0.8rem;" onclick="resetToLocalVideo(2)" title="Reset to candidate uploaded video">↺ Reset</button>
+            </div>
+            <div id="videoSourceStatus2" style="font-size: 0.725rem; color: var(--text-dim); margin-top: 0.4rem;">
+              Current Source: <span style="color: #34D399; font-weight: 600;">Uploaded Candidate Video (Local MP4)</span>
+            </div>
           </div>
 
           <!-- Chapter Seek Buttons -->
-          <div style="font-size: 0.725rem; color: var(--text-dim); margin-bottom: 0.35rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Scrub to Live Chapter:</div>
+          <div style="font-size: 0.725rem; color: var(--text-dim); margin-bottom: 0.35rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Scrub to Chapter:</div>
           <div class="chapter-pills-wrap">
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 0)">[00:00] Telemetry & Benchmarks</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 23.8)">[00:24] Pytest 14/14 Pass</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 46.9)">[00:47] Random 20 Audit Sandbox</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 69.1)">[01:09] Deliverability & Seed Test</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 92.5)">[01:32] Compliance 100/100 Audit</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 113.9)">[01:54] Turnkey Launch Kit</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 0)">[00:00] Architecture</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 45)">[00:45] Pytest 14/14 Pass</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 95)">[01:35] Normal Run (1,000)</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 150)">[02:30] Refresh & Fail-Test</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 210)">[03:30] Excel Formula Audit</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 260)">[04:20] Seed Test & Telemetry</button>
           </div>
 
           <!-- Script Line Items -->
           <div style="font-size: 0.825rem; color: #CBD5E1; line-height: 1.6; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.75rem;">
-            <div>• <strong>0:00 - 0:33:</strong> Engine telemetry, 4-mode benchmarks, and live event logs.</div>
-            <div>• <strong>0:33 - 1:02:</strong> Live terminal running pytest tests/ (14/14 passed in 0.42s).</div>
-            <div>• <strong>1:02 - 1:40:</strong> Live Random 20-Lead Audit Sandbox modal demonstration.</div>
-            <div>• <strong>1:40 - 2:15:</strong> 3-touch sequence cadence & 250_OK safe seed deliverability.</div>
-            <div>• <strong>2:15 - 3:25:</strong> 04_SELF_CHECK 100/100 dynamic verification & launch playbook.</div>
+            <div>• <strong>0:00 - 1:00:</strong> Modular architecture, config.yaml, & zero hardcoded secrets.</div>
+            <div>• <strong>1:00 - 2:00:</strong> Pytest test execution (14/14 passed in 0.42s).</div>
+            <div>• <strong>2:00 - 3:30:</strong> Normal engine run (1,000 verified leads generated in 1.8s).</div>
+            <div>• <strong>3:30 - 5:00:</strong> Refresh mode (0 duplicates) & failure recovery with backoff.</div>
+            <div>• <strong>5:00 - 7:30:</strong> Excel formula audit (AC, AD, 04_SELF_CHECK MET, 100/100).</div>
           </div>
         </div>
       </div>
@@ -2733,11 +2769,152 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
       if (modal) modal.classList.remove('active');
     }
 
+    function escapeHtml(str) {
+      return String(str || '').replace(/[&<>"']/g, s => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      })[s]);
+    }
+
+    // Dynamic Video URL Loader (Loom, YouTube, Drive, MP4, etc.)
+    function loadExternalVideo(idx, autoScroll = true) {
+      const inputEl = document.getElementById('customVideoInput' + idx);
+      const containerEl = document.getElementById('videoContainer' + idx);
+      const statusEl = document.getElementById('videoSourceStatus' + idx);
+      if (!inputEl || !containerEl) return;
+
+      const rawUrl = inputEl.value.trim();
+      if (!rawUrl) {
+        alert('Please enter or paste a valid video URL (e.g. Loom, YouTube, Google Drive, or MP4 link).');
+        inputEl.focus();
+        return;
+      }
+
+      // Stop any playing local video
+      document.querySelectorAll('video').forEach(v => v.pause());
+
+      let embedUrl = '';
+      let isIframe = false;
+
+      // 1. Loom pattern: e.g. loom.com/share/abc123xyz or loom.com/embed/abc123xyz
+      const loomMatch = rawUrl.match(/loom\.com\/(?:share|embed)\/([a-zA-Z0-9_-]+)/);
+      if (loomMatch) {
+        embedUrl = `https://www.loom.com/embed/${loomMatch[1]}?autoplay=1`;
+        isIframe = true;
+      }
+
+      // 2. YouTube pattern: e.g. youtube.com/watch?v=ID, youtu.be/ID, youtube.com/embed/ID
+      const ytMatch = rawUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+      if (ytMatch) {
+        embedUrl = `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&rel=0`;
+        isIframe = true;
+      }
+
+      // 3. Google Drive pattern: drive.google.com/file/d/ID/view
+      const gdriveMatch = rawUrl.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (gdriveMatch) {
+        embedUrl = `https://drive.google.com/file/d/${gdriveMatch[1]}/preview`;
+        isIframe = true;
+      }
+
+      // 4. Vimeo pattern: vimeo.com/123456
+      const vimeoMatch = rawUrl.match(/vimeo\.com\/(?:video\/)?([0-9]+)/);
+      if (vimeoMatch) {
+        embedUrl = `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1`;
+        isIframe = true;
+      }
+
+      if (isIframe) {
+        containerEl.innerHTML = `
+          <iframe id="videoIframe${idx}" src="${embedUrl}" 
+            style="width: 100%; aspect-ratio: 16/9; border: 0; border-radius: 12px; display: block; background: #000;" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen></iframe>
+        `;
+      } else {
+        // Direct media URL (MP4, WebM, etc.)
+        containerEl.innerHTML = `
+          <video id="videoPlayer${idx}" controls playsinline autoplay style="width: 100%; aspect-ratio: 16/9; border-radius: 12px; background: #000; object-fit: contain;">
+            <source src="${encodeURI(rawUrl)}">
+            Your browser does not support the video tag.
+          </video>
+        `;
+      }
+
+      // Save to localStorage for persistence across reloads
+      try {
+        localStorage.setItem('incubrix_custom_video_' + idx, rawUrl);
+      } catch (e) {
+        console.warn('Storage error:', e);
+      }
+
+      if (statusEl) {
+        const shortUrl = rawUrl.length > 55 ? rawUrl.substring(0, 52) + '...' : rawUrl;
+        statusEl.innerHTML = `Current Source: <span style="color: #60A5FA; font-weight: 600;">Active External Link (<a href="${encodeURI(rawUrl)}" target="_blank" rel="noopener noreferrer" style="color: #93C5FD; text-decoration: underline;">${escapeHtml(shortUrl)}</a>)</span>`;
+      }
+
+      if (autoScroll) {
+        containerEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    function resetToLocalVideo(idx) {
+      const containerEl = document.getElementById('videoContainer' + idx);
+      const inputEl = document.getElementById('customVideoInput' + idx);
+      const statusEl = document.getElementById('videoSourceStatus' + idx);
+      if (!containerEl) return;
+
+      const localSrc = idx === 1 ? 'videos/video_01_product_walkthrough.mp4' : 'videos/video_02_technical_demo.mp4';
+      const posterSrc = idx === 1 ? 'videos/poster_video1.png' : 'videos/poster_video2.png';
+
+      containerEl.innerHTML = `
+        <video id="videoPlayer${idx}" controls playsinline preload="metadata" poster="${posterSrc}">
+          <source src="${localSrc}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      `;
+
+      if (inputEl) inputEl.value = '';
+
+      try {
+        localStorage.removeItem('incubrix_custom_video_' + idx);
+      } catch (e) {
+        console.warn('Storage error:', e);
+      }
+
+      if (statusEl) {
+        statusEl.innerHTML = 'Current Source: <span style="color: #34D399; font-weight: 600;">Uploaded Candidate Video (Local MP4)</span>';
+      }
+    }
+
+    function initCustomVideos() {
+      [1, 2].forEach(idx => {
+        const inputEl = document.getElementById('customVideoInput' + idx);
+        if (inputEl) {
+          inputEl.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              loadExternalVideo(idx, true);
+            }
+          });
+        }
+        try {
+          const savedUrl = localStorage.getItem('incubrix_custom_video_' + idx);
+          if (savedUrl) {
+            if (inputEl) inputEl.value = savedUrl;
+            loadExternalVideo(idx, false);
+          }
+        } catch (e) {
+          console.warn('Storage init:', e);
+        }
+      });
+    }
+
     // Initialize
     renderLeadsTable();
     filterPriorityDropdown();
     calculateROI();
     handleHashRouting();
+    initCustomVideos();
   </script>
 
   <!-- Floating Back to Top Button -->
