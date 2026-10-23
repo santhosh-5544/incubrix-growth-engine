@@ -458,19 +458,6 @@ html_content = """<!DOCTYPE html>
       border-color: var(--card-border-glow);
       box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.8), 0 0 16px rgba(16, 185, 129, 0.2);
     }
-    .stat-card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #10B981, #059669);
-    }
-    .stat-card.emerald::after { background: linear-gradient(90deg, #10B981, #34D399); }
-    .stat-card.cyan::after { background: linear-gradient(90deg, #0EA5E9, #38BDF8); }
-    .stat-card.amber::after { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
-    .stat-card.indigo::after { background: linear-gradient(90deg, #6366F1, #818CF8); }
     .stat-val {
       font-size: 2.15rem;
       font-weight: 800;
@@ -1207,12 +1194,12 @@ html_content = """<!DOCTYPE html>
 
   <!-- Key Metrics -->
   <div class="stats-grid">
-    <div class="stat-card emerald" onclick="switchSection('leads')" style="cursor: pointer;" title="Click to view 1,000 Leads">
+    <div class="stat-card" onclick="switchSection('leads')" style="cursor: pointer;" title="Click to view 1,000 Leads">
       <div class="stat-val">1,000</div>
       <div class="stat-label">Qualified Leads →</div>
       <div class="stat-desc">Zero guessed emails or fan pages. 100% pass 30d activity & monetization checks.</div>
     </div>
-    <div class="stat-card cyan" onclick="switchSection('analytics')" style="cursor: pointer;" title="Click to view Analytics">
+    <div class="stat-card" onclick="switchSection('analytics')" style="cursor: pointer;" title="Click to view Analytics">
       <div class="stat-val">95.3%</div>
       <div class="stat-label">Approved Country Mix →</div>
       <div class="stat-desc">7 Tier-1 countries. US capped at 50.5% (strictly &le; 60% requirement).</div>
@@ -1222,7 +1209,7 @@ html_content = """<!DOCTYPE html>
       <div class="stat-label">Reachable Contact →</div>
       <div class="stat-desc">Verified Email, LinkedIn, X, and Instagram handles published by creators.</div>
     </div>
-    <div class="stat-card amber" onclick="switchSection('roi')" style="cursor: pointer;" title="Click to simulate ROI">
+    <div class="stat-card" onclick="switchSection('roi')" style="cursor: pointer;" title="Click to simulate ROI">
       <div class="stat-val">$920/mo</div>
       <div class="stat-label">Projected Net MRR →</div>
       <div class="stat-desc">From 30-day turnkey outreach plan with an agile $262/mo tooling budget.</div>
@@ -1993,9 +1980,9 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
         <div>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
             <span class="badge-pill" style="background: rgba(56, 189, 248, 0.12); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35);">Video 01 (5 Min Max)</span>
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #34D399; font-weight: 700;">HD 720p • 3.3 Min</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #34D399; font-weight: 700;">Live Screencast • 2.5 Min</span>
           </div>
-          <h3 style="color: white; margin-bottom: 0.25rem;">Product Walkthrough & Growth Audit</h3>
+          <h3 style="color: white; margin-bottom: 0.25rem;">Live Portal Walkthrough & Product Audit</h3>
           <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
             Candidate: <strong>Santhosh P</strong> • Script: <a href="https://github.com/santhosh-5544/incubrix-growth-engine/blob/main/docs/PRODUCT_WALKTHROUGH_SCRIPT.md" target="_blank" class="link-subtle">docs/PRODUCT_WALKTHROUGH_SCRIPT.md ↗</a>
           </p>
@@ -2012,29 +1999,29 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
           <div class="video-controls-bar">
             <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
               <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="playPauseVideo('videoPlayer1')">⏯️ Play / Pause</button>
-              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="openTheater('videos/video_01_product_walkthrough.mp4', 'Video 01: Product Walkthrough & Growth Audit')">⛶ Theater Mode</button>
+              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="openTheater('videos/video_01_product_walkthrough.mp4', 'Video 01: Live Portal Walkthrough & Product Audit')">⛶ Theater Mode</button>
             </div>
-            <a href="videos/video_01_product_walkthrough.mp4" download class="btn btn-download" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">⬇️ Download MP4 (3.1 MB)</a>
+            <a href="videos/video_01_product_walkthrough.mp4" download class="btn btn-download" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">⬇️ Download MP4</a>
           </div>
 
           <!-- Chapter Seek Buttons -->
-          <div style="font-size: 0.725rem; color: var(--text-dim); margin-bottom: 0.35rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Scrub to Chapter:</div>
+          <div style="font-size: 0.725rem; color: var(--text-dim); margin-bottom: 0.35rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Scrub to Live Chapter:</div>
           <div class="chapter-pills-wrap">
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 0)">[00:00] Intro & Brand</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 28.7)">[00:28] Repurposing & Subtitles</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 62.8)">[01:02] Pricing & Rollover</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 94.9)">[01:34] Omni-Channel Hub</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 130.0)">[02:10] 3 GTM Levers</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 166.1)">[02:46] Unit Economics</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 0)">[00:00] Live Portal Tour</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 23.1)">[00:23] Leads & Dossier Modal</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 48.6)">[00:48] Credit & Analytics</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 74.1)">[01:14] Live ROI Simulator</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 103.3)">[01:43] 01_INSIGHT Audit</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 126.6)">[02:06] Priority Hub</button>
           </div>
 
           <!-- Script Line Items -->
           <div style="font-size: 0.825rem; color: #CBD5E1; line-height: 1.6; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.75rem;">
-            <div>• <strong>0:00 - 0:40:</strong> IncuBrix Creator OS overview & core value proposition.</div>
-            <div>• <strong>0:40 - 1:30:</strong> Obs 1: Video clip repurposing & kinetic karaoke subtitles.</div>
-            <div>• <strong>1:30 - 2:20:</strong> Obs 2: Credit economy & 1-year rollover policy vs 30d Opus Clip.</div>
-            <div>• <strong>2:20 - 3:45:</strong> Obs 3, 4, 5: Omni-channel syndication, voice dubbing, & frictionless TTV.</div>
-            <div>• <strong>3:45 - 5:00:</strong> 3 Quantified 30-Day GTM opportunities (Podcasters, Editors, Course creators).</div>
+            <div>• <strong>0:00 - 0:28:</strong> Live portal inspection, candidate pill, and clean stat cards.</div>
+            <div>• <strong>0:28 - 1:02:</strong> 02_LEADS explorer search and full 30-field dossier modal.</div>
+            <div>• <strong>1:02 - 1:34:</strong> Pricing credit rollover policy and interactive Chart.js graphs.</div>
+            <div>• <strong>1:34 - 2:10:</strong> Interactive ROI calculator moving sliders in real time.</div>
+            <div>• <strong>2:10 - 3:20:</strong> 01_INSIGHT audit and 1,000-Lead Priority Hub sequences.</div>
           </div>
         </div>
       </div>
@@ -2044,9 +2031,9 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
         <div>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
             <span class="badge-pill" style="background: rgba(99, 102, 241, 0.12); color: #818CF8; border: 1px solid rgba(99, 102, 241, 0.35);">Video 02 (8 Min Max)</span>
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #34D399; font-weight: 700;">HD 720p • 3.4 Min</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #34D399; font-weight: 700;">Live Screencast • 2.3 Min</span>
           </div>
-          <h3 style="color: white; margin-bottom: 0.25rem;">Technical Demo & Engine Defense</h3>
+          <h3 style="color: white; margin-bottom: 0.25rem;">Live Technical Demo & Architecture Defense</h3>
           <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
             Candidate: <strong>Santhosh P</strong> • Script: <a href="https://github.com/santhosh-5544/incubrix-growth-engine/blob/main/docs/TECHNICAL_DEMO_SCRIPT.md" target="_blank" class="link-subtle">docs/TECHNICAL_DEMO_SCRIPT.md ↗</a>
           </p>
@@ -2063,29 +2050,29 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
           <div class="video-controls-bar">
             <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
               <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="playPauseVideo('videoPlayer2')">⏯️ Play / Pause</button>
-              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="openTheater('videos/video_02_technical_demo.mp4', 'Video 02: Technical Demo & Engine Defense')">⛶ Theater Mode</button>
+              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="openTheater('videos/video_02_technical_demo.mp4', 'Video 02: Live Technical Demo & Architecture Defense')">⛶ Theater Mode</button>
             </div>
-            <a href="videos/video_02_technical_demo.mp4" download class="btn btn-download" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">⬇️ Download MP4 (3.2 MB)</a>
+            <a href="videos/video_02_technical_demo.mp4" download class="btn btn-download" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">⬇️ Download MP4</a>
           </div>
 
           <!-- Chapter Seek Buttons -->
-          <div style="font-size: 0.725rem; color: var(--text-dim); margin-bottom: 0.35rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Scrub to Chapter:</div>
+          <div style="font-size: 0.725rem; color: var(--text-dim); margin-bottom: 0.35rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Scrub to Live Chapter:</div>
           <div class="chapter-pills-wrap">
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 0)">[00:00] Architecture</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 33.9)">[00:33] Pytest 14/14 Pass</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 62.5)">[01:02] Normal Run (1,000)</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 100.2)">[01:40] Refresh & Fail-Test</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 135.7)">[02:15] Excel Formula Audit</button>
-            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 170.0)">[02:50] Seed Test & Telemetry</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 0)">[00:00] Telemetry & Benchmarks</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 23.8)">[00:24] Pytest 14/14 Pass</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 46.9)">[00:47] Random 20 Audit Sandbox</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 69.1)">[01:09] Deliverability & Seed Test</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 92.5)">[01:32] Compliance 100/100 Audit</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 113.9)">[01:54] Turnkey Launch Kit</button>
           </div>
 
           <!-- Script Line Items -->
           <div style="font-size: 0.825rem; color: #CBD5E1; line-height: 1.6; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.75rem;">
-            <div>• <strong>0:00 - 1:00:</strong> Modular architecture, config.yaml, & zero hardcoded secrets.</div>
-            <div>• <strong>1:00 - 2:00:</strong> Pytest test execution (14/14 passed in 0.42s).</div>
-            <div>• <strong>2:00 - 3:30:</strong> Normal engine run (1,000 verified leads generated in 1.8s).</div>
-            <div>• <strong>3:30 - 5:00:</strong> Refresh mode (0 duplicates) & failure recovery with backoff.</div>
-            <div>• <strong>5:00 - 7:30:</strong> Excel formula audit (AC, AD, 04_SELF_CHECK MET, 100/100).</div>
+            <div>• <strong>0:00 - 0:33:</strong> Engine telemetry, 4-mode benchmarks, and live event logs.</div>
+            <div>• <strong>0:33 - 1:02:</strong> Live terminal running pytest tests/ (14/14 passed in 0.42s).</div>
+            <div>• <strong>1:02 - 1:40:</strong> Live Random 20-Lead Audit Sandbox modal demonstration.</div>
+            <div>• <strong>1:40 - 2:15:</strong> 3-touch sequence cadence & 250_OK safe seed deliverability.</div>
+            <div>• <strong>2:15 - 3:25:</strong> 04_SELF_CHECK 100/100 dynamic verification & launch playbook.</div>
           </div>
         </div>
       </div>
