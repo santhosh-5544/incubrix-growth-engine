@@ -34,3 +34,5 @@ check_incubrix.py
 parse_priority_a.py
 priority_a_data.json
 sample_leads.json
+~$*.xlsx
+*_latest.xlsx

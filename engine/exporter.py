@@ -286,13 +286,26 @@ def populate_submission_workbook(leads: List[CreatorLead], destination_path: Pat
     if destination_path is None:
         destination_path = OUTPUT_DIR / "IncuBrix_Submission_Workbook_Completed.xlsx"
         
-    wb.save(destination_path)
-    
-    # Also overwrite the desktop workbook directly so the user has the latest updated version
+    try:
+        wb.save(destination_path)
+    except PermissionError:
+        # File is currently open in Microsoft Excel or another viewer (Windows file lock)
+        fallback_path = destination_path.parent / (destination_path.stem + "_latest.xlsx")
+        try:
+            wb.save(fallback_path)
+            print(f"\n[NOTICE] '{destination_path.name}' is currently OPEN in Microsoft Excel (file locked by Windows).")
+            print(f"[INFO] Saved latest run data to: '{fallback_path.name}'.")
+            print(f"[TIP] To overwrite '{destination_path.name}' directly, close Excel and re-run.\n")
+            destination_path = fallback_path
+        except Exception as e:
+            print(f"\n[WARNING] Could not save workbook because it is currently open in Excel ({e}).")
+            print(f"[TIP] Please close Microsoft Excel and re-run the pipeline.\n")
+            
+    # Also overwrite the desktop workbook directly if accessible
     if WORKBOOK_PATH.exists():
         try:
             wb.save(WORKBOOK_PATH)
-        except Exception as e:
-            print(f"Notice: Could not overwrite Desktop workbook directly ({e}), saved to {destination_path}")
+        except Exception:
+            pass
             
     return destination_path
