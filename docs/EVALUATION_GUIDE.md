@@ -5,7 +5,9 @@
 **Institution**: PSG College of Technology  
 **Contact Email**: `24i435@psgtech.ac.in`  
 **GitHub Repository**: [github.com/santhosh-5544/incubrix-growth-engine](https://github.com/santhosh-5544/incubrix-growth-engine)  
-**Live Interactive Web Portal**: [santhosh-5544.github.io/incubrix-growth-engine](https://santhosh-5544.github.io/incubrix-growth-engine/)
+**Live Interactive Web Portal**: [santhosh-5544.github.io/incubrix-growth-engine](https://santhosh-5544.github.io/incubrix-growth-engine/)  
+**🎬 Video 01 (Product Walkthrough, 3.4 min)**: [Watch on Google Drive ↗](https://drive.google.com/file/d/1uYAnJprjjpaFHcLridepNeZMphKrG2OR/view?usp=sharing)  
+**💻 Video 02 (Technical Demo & Defense, 5.1 min)**: [Watch on Google Drive ↗](https://drive.google.com/file/d/1NQWStO8iRftNChaD4NILJgofAiQ3atjB/view?usp=sharing)  
 
 ---
 
@@ -13,7 +15,10 @@
 
 If you have only 2 minutes to review this submission:
 
-1. **Open the Live Web Portal**: [santhosh-5544.github.io/incubrix-growth-engine](https://santhosh-5544.github.io/incubrix-growth-engine/)
+1. **Watch the Candidate Walkthrough Videos**:
+   - **Video 1 (Product & Market Insight, 3.4 min)**: [Google Drive Link ↗](https://drive.google.com/file/d/1uYAnJprjjpaFHcLridepNeZMphKrG2OR/view?usp=sharing)
+   - **Video 2 (Engine Run, Tests & Defense, 5.1 min)**: [Google Drive Link ↗](https://drive.google.com/file/d/1NQWStO8iRftNChaD4NILJgofAiQ3atjB/view?usp=sharing)
+2. **Open the Live Web Portal**: [santhosh-5544.github.io/incubrix-growth-engine](https://santhosh-5544.github.io/incubrix-growth-engine/)
    - Browse all 1,000 qualified commercial creators with live search, country filter, and score ranking.
    - Click the **"🎲 Run 20-Lead Random Audit"** button to simulate the official audit live in the browser (100% pass rate).
    - Click any row in the **Priority A** tab to review full 3-touch personalized sequences with video quotes and friction-free CTAs.

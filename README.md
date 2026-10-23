@@ -11,6 +11,9 @@
 > **2027 Graduate Hiring | Growth Engineer Assessment | Option 1: Multi-Channel Lead Generation and Outreach Engine**  
 > **Candidate**: Santhosh P (`24i435@psgtech.ac.in`) | PSG College of Technology (Roll: `24I435`)  
 > **Interactive Showcase**: 👉 **[santhosh-5544.github.io/incubrix-growth-engine](https://santhosh-5544.github.io/incubrix-growth-engine/)**  
+> **🎥 Official Demonstration Videos (Google Drive)**:
+> - **Video 01: Product Walkthrough & Growth Audit (3.4 min)**: [Watch on Google Drive ↗](https://drive.google.com/file/d/1uYAnJprjjpaFHcLridepNeZMphKrG2OR/view?usp=sharing)
+> - **Video 02: Technical Demo & Engine Defense (5.1 min)**: [Watch on Google Drive ↗](https://drive.google.com/file/d/1NQWStO8iRftNChaD4NILJgofAiQ3atjB/view?usp=sharing)  
 > **Quick Links**: [Evaluator Guide](docs/EVALUATION_GUIDE.md) • [Technical Architecture](docs/ARCHITECTURE.md) • [Interview Defense Cheat Sheet](docs/LIVE_INTERVIEW_DEFENSE_CHEAT_SHEET.md) • [Launch Kit Playbook](LAUNCH_KIT.md)
 
 ---
@@ -181,8 +184,8 @@ All runs recorded in `logs/`:
   - `docs/EVALUATION_GUIDE.md` (2-minute evaluation guide mapping all requirements)
   - `docs/ARCHITECTURE.md` (Full pipeline technical design & 30-column data dictionary)
   - `docs/LIVE_INTERVIEW_DEFENSE_CHEAT_SHEET.md` (Live interview Q&A and 5 lead tracing examples)
-  - `docs/PRODUCT_WALKTHROUGH_SCRIPT.md` (Unedited 5-minute product walkthrough)
-  - `docs/TECHNICAL_DEMO_SCRIPT.md` (Unedited 8-minute technical demo)
+  - `docs/PRODUCT_WALKTHROUGH_SCRIPT.md` (Unedited 5-minute product walkthrough • [Watch Video 1 on Google Drive ↗](https://drive.google.com/file/d/1uYAnJprjjpaFHcLridepNeZMphKrG2OR/view?usp=sharing))
+  - `docs/TECHNICAL_DEMO_SCRIPT.md` (Unedited 8-minute technical demo • [Watch Video 2 on Google Drive ↗](https://drive.google.com/file/d/1NQWStO8iRftNChaD4NILJgofAiQ3atjB/view?usp=sharing))
 
 ---
 

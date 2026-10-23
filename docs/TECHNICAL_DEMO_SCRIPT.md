@@ -1,9 +1,10 @@
 # IncuBrix Lead Engine: Technical Demo Video Script (Max 8 Minutes)
 
-**Video Target Duration**: 7 Minutes 30 Seconds (Strictly under 8 min limit)  
+**Video Duration**: 5 Minutes 10 Seconds (Strictly under 8 min limit)  
 **Speaker**: Santhosh P (Growth Engineer Candidate)  
-**Recording Mode**: Unedited screen recording with terminal & code editor (Loom / OBS)  
-**Target URL**: `https://www.loom.com/share/incubrix-technical-demo-santhosh`  
+**Recording Mode**: Screen recording with terminal, VS Code, and live execution  
+**Official Video Link**: [Watch on Google Drive ↗](https://drive.google.com/file/d/1NQWStO8iRftNChaD4NILJgofAiQ3atjB/view?usp=sharing)  
+**Google Drive URL**: `https://drive.google.com/file/d/1NQWStO8iRftNChaD4NILJgofAiQ3atjB/view?usp=sharing`  
 **Core Deliverables Required**: One normal run, a refresh on new input, and recovery from one simple failure.
 
 ---

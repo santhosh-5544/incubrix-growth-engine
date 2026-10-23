@@ -1,9 +1,10 @@
 # IncuBrix Product Walkthrough Video Script (Max 5 Minutes)
 
-**Video Target Duration**: 4 Minutes 45 Seconds (Strictly under 5 min limit)  
+**Video Duration**: 3 Minutes 24 Seconds (Strictly under 5 min limit)  
 **Speaker**: Santhosh P (Growth Engineer Candidate)  
-**Recording Mode**: Unedited screen recording with webcam bubble (Loom / OBS)  
-**Target URL**: `https://www.loom.com/share/incubrix-product-walkthrough-santhosh`  
+**Recording Mode**: Screen recording with webcam & live walkthrough  
+**Official Video Link**: [Watch on Google Drive ↗](https://drive.google.com/file/d/1uYAnJprjjpaFHcLridepNeZMphKrG2OR/view?usp=sharing)  
+**Google Drive URL**: `https://drive.google.com/file/d/1uYAnJprjjpaFHcLridepNeZMphKrG2OR/view?usp=sharing`  
 **Core Deliverable**: 5 Specific Product Observations with evidence + 3 Biggest GTM Opportunities for IncuBrix
 
 ---
