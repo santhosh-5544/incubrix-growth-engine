@@ -184,6 +184,8 @@ html_content = """<!DOCTYPE html>
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
     .brand {
       display: flex;
@@ -232,25 +234,71 @@ html_content = """<!DOCTYPE html>
       display: flex;
       gap: 0.6rem;
       align-items: center;
+      flex-wrap: wrap;
     }
     .theme-toggle-btn {
-      background: var(--pill-bg);
-      border: 1px solid var(--card-border-glow);
+      background: var(--card-bg-elevated);
+      border: 1.5px solid var(--primary);
       color: var(--text);
-      padding: 0.42rem 0.85rem;
+      padding: 0.45rem 1rem;
       border-radius: 9999px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
+      box-shadow: 0 0 12px var(--primary-glow);
       transition: all 0.2s ease;
     }
     .theme-toggle-btn:hover {
-      border-color: var(--primary);
+      border-color: var(--accent);
       transform: translateY(-1px);
-      box-shadow: 0 0 12px var(--primary-glow);
+      box-shadow: 0 0 16px var(--accent-glow);
+    }
+    .floating-theme-btn {
+      position: fixed;
+      bottom: 5.25rem;
+      right: 2rem;
+      background: var(--card-bg-elevated);
+      color: var(--text);
+      border: 2px solid var(--primary);
+      border-radius: 9999px;
+      padding: 0.6rem 1.15rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 16px var(--primary-glow);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 999;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .floating-theme-btn:hover {
+      transform: translateY(-2px) scale(1.05);
+      border-color: var(--accent);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 22px var(--accent-glow);
+    }
+    @media (max-width: 900px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .top-actions {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+      .floating-theme-btn {
+        bottom: 4.8rem;
+        right: 1.25rem;
+        padding: 0.5rem 0.95rem;
+      }
+      .back-to-top {
+        bottom: 1.5rem;
+        right: 1.25rem;
+        padding: 0.5rem 0.95rem;
+      }
     }
     .btn {
       background: var(--primary);
@@ -1001,7 +1049,7 @@ html_content = """<!DOCTYPE html>
         <!-- Light / Dark Theme Switcher Button -->
         <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()" title="Switch Light/Dark theme">
           <span id="themeToggleIcon">☀️</span>
-          <span id="themeToggleText">Light</span>
+          <span id="themeToggleText">Light Mode</span>
         </button>
         <a href="https://github.com/santhosh-5544/incubrix-growth-engine" target="_blank" class="btn btn-outline">GitHub Repo ↗</a>
         <a href="https://github.com/santhosh-5544/incubrix-growth-engine/raw/main/output/leads.csv" class="btn btn-outline" download>leads.csv ⬇</a>
@@ -2308,12 +2356,19 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
 
       const icon = document.getElementById('themeToggleIcon');
       const text = document.getElementById('themeToggleText');
+      const floatIcon = document.getElementById('floatingThemeIcon');
+      const floatText = document.getElementById('floatingThemeText');
+
       if (theme === 'light') {
         if (icon) icon.innerText = '🌙';
-        if (text) text.innerText = 'Dark';
+        if (text) text.innerText = 'Dark Mode';
+        if (floatIcon) floatIcon.innerText = '🌙';
+        if (floatText) floatText.innerText = 'Dark';
       } else {
         if (icon) icon.innerText = '☀️';
-        if (text) text.innerText = 'Light';
+        if (text) text.innerText = 'Light Mode';
+        if (floatIcon) floatIcon.innerText = '☀️';
+        if (floatText) floatText.innerText = 'Light';
       }
 
       if (updateCharts && chartsInitialized) {
@@ -2477,6 +2532,12 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
     calculateROI();
     handleHashRouting();
   </script>
+
+  <!-- Floating Theme Switcher Button (Always accessible anywhere on the page) -->
+  <button id="floatingThemeToggle" class="floating-theme-btn" onclick="toggleTheme()" title="Switch Light / Dark Theme">
+    <span id="floatingThemeIcon" style="font-size: 1.15rem;">☀️</span>
+    <span id="floatingThemeText">Light</span>
+  </button>
 
   <!-- Floating Back to Top Button -->
   <button id="backToTop" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
