@@ -78,58 +78,64 @@ html_content = """<!DOCTYPE html>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
     :root {
-      /* Shared Luxury Brand Palette */
-      --gold: #D4AF37;
-      --gold-light: #FDE047;
-      --gold-dark: #996515;
-      --gold-glow: rgba(212, 175, 55, 0.28);
-      --gold-gradient: linear-gradient(135deg, #F59E0B 0%, #D4AF37 50%, #FDE68A 100%);
-      
-      --primary: #4F46E5;
-      --primary-hover: #4338CA;
-      --primary-glow: rgba(79, 70, 229, 0.3);
-      --accent: #0EA5E9;
-      --accent-glow: rgba(14, 165, 233, 0.25);
-      --success: #10B981;
-      --success-glow: rgba(16, 185, 129, 0.25);
-      --warning: #F59E0B;
-      --danger: #EF4444;
+      /* High-Contrast Luxury Monochrome Black & White Palette */
+      --white: #FFFFFF;
+      --gray-100: #F5F5F5;
+      --gray-200: #E5E5E5;
+      --gray-300: #D4D4D4;
+      --gray-400: #A3A3A3;
+      --gray-500: #737373;
+      --gray-600: #525252;
+      --gray-700: #404040;
+      --gray-800: #262626;
+      --gray-900: #141414;
+      --black: #000000;
 
-      /* Dark Theme: Obsidian Noir & Champagne Gold */
-      --bg: #07090E;
-      --bg-radial: radial-gradient(ellipse 90% 55% at 50% -5%, rgba(212, 175, 55, 0.09) 0%, rgba(79, 70, 229, 0.07) 35%, transparent 75%), radial-gradient(circle at 100% 30%, rgba(14, 165, 233, 0.05) 0%, transparent 50%), #07090E;
-      --header-bg: rgba(7, 9, 14, 0.88);
-      --nav-wrapper-bg: rgba(7, 9, 14, 0.92);
-      --nav-bar-bg: rgba(14, 18, 28, 0.8);
-      --card-bg: rgba(14, 18, 28, 0.78);
-      --card-bg-elevated: rgba(22, 28, 44, 0.88);
-      --card-border: rgba(212, 175, 55, 0.18);
-      --card-border-glow: rgba(212, 175, 55, 0.45);
-      --card-top-gold-bar: linear-gradient(90deg, #D4AF37 0%, #F59E0B 50%, #4F46E5 100%);
-      --text: #F8FAFC;
+      --primary: #FFFFFF;
+      --primary-hover: #E5E5E5;
+      --primary-glow: rgba(255, 255, 255, 0.25);
+      --accent: #FFFFFF;
+      --accent-glow: rgba(255, 255, 255, 0.2);
+      --success: #FFFFFF;
+      --success-glow: rgba(255, 255, 255, 0.2);
+      --warning: #D4D4D4;
+      --danger: #A3A3A3;
+
+      /* Deep Noir Background & Surfaces */
+      --bg: #000000;
+      --bg-radial: radial-gradient(ellipse 90% 55% at 50% -5%, rgba(255, 255, 255, 0.08) 0%, transparent 70%), #000000;
+      --header-bg: rgba(10, 10, 10, 0.92);
+      --nav-wrapper-bg: rgba(10, 10, 10, 0.95);
+      --nav-bar-bg: rgba(18, 18, 18, 0.9);
+      --card-bg: rgba(16, 16, 16, 0.88);
+      --card-bg-elevated: rgba(26, 26, 26, 0.95);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --card-border-glow: rgba(255, 255, 255, 0.45);
+      --card-top-gold-bar: linear-gradient(90deg, #FFFFFF 0%, #A3A3A3 50%, #404040 100%);
+      --text: #EDEDED;
       --text-heading: #FFFFFF;
-      --text-muted: #94A3B8;
-      --text-dim: #64748B;
-      --table-th-bg: rgba(14, 18, 28, 0.96);
-      --table-border: rgba(212, 175, 55, 0.12);
-      --table-text: #CBD5E1;
-      --input-bg: rgba(11, 14, 23, 0.95);
+      --text-muted: #A3A3A3;
+      --text-dim: #737373;
+      --table-th-bg: rgba(20, 20, 20, 0.96);
+      --table-border: rgba(255, 255, 255, 0.1);
+      --table-text: #D4D4D4;
+      --input-bg: rgba(18, 18, 18, 0.95);
       --input-text: #FFFFFF;
-      --touch-bg: rgba(14, 18, 28, 0.75);
-      --message-box-bg: rgba(9, 12, 18, 0.9);
-      --hero-heading-gradient: linear-gradient(135deg, #FFFFFF 20%, #FDE68A 65%, #D4AF37 100%);
-      --candidate-pill-bg: rgba(22, 28, 44, 0.7);
-      --pill-bg: rgba(22, 28, 44, 0.75);
-      --btn-outline-bg: rgba(22, 28, 44, 0.7);
-      --btn-outline-color: #F8FAFC;
-      --stat-card-shadow: 0 14px 36px -10px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(212, 175, 55, 0.16);
-      --dock-tab-inactive: #94A3B8;
-      --dock-tab-hover-bg: rgba(255, 255, 255, 0.05);
-      --terminal-bg: #070A10;
-      --terminal-bar-bg: #101522;
-      --badge-gold-text: #FDE047;
-      --badge-gold-bg: rgba(212, 175, 55, 0.16);
-      --badge-gold-border: rgba(212, 175, 55, 0.45);
+      --touch-bg: rgba(18, 18, 18, 0.85);
+      --message-box-bg: rgba(12, 12, 12, 0.95);
+      --hero-heading-gradient: linear-gradient(180deg, #FFFFFF 30%, #A3A3A3 100%);
+      --candidate-pill-bg: rgba(26, 26, 26, 0.8);
+      --pill-bg: rgba(26, 26, 26, 0.8);
+      --btn-outline-bg: rgba(26, 26, 26, 0.8);
+      --btn-outline-color: #FFFFFF;
+      --stat-card-shadow: 0 14px 36px -10px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.12);
+      --dock-tab-inactive: #A3A3A3;
+      --dock-tab-hover-bg: rgba(255, 255, 255, 0.08);
+      --terminal-bg: #0A0A0A;
+      --terminal-bar-bg: #141414;
+      --badge-gold-text: #000000;
+      --badge-gold-bg: #FFFFFF;
+      --badge-gold-border: #FFFFFF;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -147,7 +153,7 @@ html_content = """<!DOCTYPE html>
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+    ::-webkit-scrollbar-thumb:hover { background: #FFFFFF; }
 
     /* Top Navigation */
     header {
@@ -177,16 +183,16 @@ html_content = """<!DOCTYPE html>
     .brand-logo {
       width: 36px;
       height: 36px;
-      background: linear-gradient(135deg, #D4AF37 0%, #F59E0B 45%, #4F46E5 100%);
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: #FFFFFF;
+      border: 1px solid #FFFFFF;
       border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
       font-size: 1.05rem;
-      color: white;
-      box-shadow: 0 4px 14px var(--gold-glow);
+      color: #000000;
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.25);
     }
     .brand-title {
       font-size: 1.05rem;
@@ -201,9 +207,9 @@ html_content = """<!DOCTYPE html>
     .brand-badge {
       font-size: 0.65rem;
       font-weight: 700;
-      background: var(--badge-gold-bg);
-      border: 1px solid var(--badge-gold-border);
-      color: var(--badge-gold-text);
+      background: #262626;
+      border: 1px solid #525252;
+      color: #FFFFFF;
       padding: 0.18rem 0.55rem;
       border-radius: 9999px;
       text-transform: uppercase;
@@ -235,23 +241,23 @@ html_content = """<!DOCTYPE html>
       }
     }
     .btn {
-      background: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
-      color: white;
+      background: #FFFFFF;
+      color: #000000;
       padding: 0.48rem 1.1rem;
       border-radius: 9px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.8rem;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid #FFFFFF;
       cursor: pointer;
     }
     .btn:hover {
-      background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
-      box-shadow: 0 0 20px var(--primary-glow);
+      background: #E5E5E5;
+      box-shadow: 0 0 16px rgba(255, 255, 255, 0.35);
       transform: translateY(-1px);
     }
     .btn-outline {
@@ -260,16 +266,20 @@ html_content = """<!DOCTYPE html>
       color: var(--btn-outline-color);
     }
     .btn-outline:hover {
-      background: var(--card-bg-elevated);
-      border-color: var(--gold);
-      box-shadow: 0 0 12px var(--gold-glow);
+      background: #262626;
+      border-color: #FFFFFF;
+      color: #FFFFFF;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
     }
     .btn-accent {
-      background: linear-gradient(135deg, #059669, #10B981);
-      border: 1px solid rgba(16, 185, 129, 0.4);
+      background: #FFFFFF;
+      color: #000000;
+      border: 1px solid #FFFFFF;
+      font-weight: 700;
     }
     .btn-accent:hover {
-      box-shadow: 0 0 20px var(--success-glow);
+      background: #E5E5E5;
+      box-shadow: 0 0 16px rgba(255, 255, 255, 0.35);
       transform: translateY(-1px);
     }
 
@@ -316,14 +326,15 @@ html_content = """<!DOCTYPE html>
       gap: 0.35rem;
     }
     .nav-tab:hover {
-      color: var(--text-heading);
+      color: #FFFFFF;
       background: var(--dock-tab-hover-bg);
     }
     .nav-tab.active {
-      color: white;
-      background: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
-      border: 1px solid rgba(212, 175, 55, 0.35);
-      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4), 0 0 10px var(--gold-glow);
+      color: #000000;
+      background: #FFFFFF;
+      border: 1px solid #FFFFFF;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
     }
 
     /* Hero */
@@ -338,9 +349,9 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34D399;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
       font-weight: 600;
       font-size: 0.775rem;
       padding: 0.3rem 0.85rem;
@@ -350,9 +361,9 @@ html_content = """<!DOCTYPE html>
     .badge-dot {
       width: 7px;
       height: 7px;
-      background: #10B981;
+      background: #FFFFFF;
       border-radius: 50%;
-      box-shadow: 0 0 8px #10B981;
+      box-shadow: 0 0 8px #FFFFFF;
     }
     .hero h2 {
       font-size: 2.85rem;
@@ -409,7 +420,7 @@ html_content = """<!DOCTYPE html>
     .stat-card:hover {
       transform: translateY(-3px);
       border-color: var(--card-border-glow);
-      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.4), 0 0 16px var(--gold-glow);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.8), 0 0 16px rgba(255, 255, 255, 0.15);
     }
     .stat-card::after {
       content: '';
@@ -418,11 +429,11 @@ html_content = """<!DOCTYPE html>
       left: 0;
       right: 0;
       height: 3px;
-      background: var(--gold-gradient);
+      background: linear-gradient(90deg, #FFFFFF, #737373);
     }
-    .stat-card.emerald::after { background: linear-gradient(90deg, #10B981, #059669); }
-    .stat-card.cyan::after { background: linear-gradient(90deg, #0EA5E9, #38BDF8); }
-    .stat-card.amber::after { background: var(--gold-gradient); }
+    .stat-card.emerald::after { background: linear-gradient(90deg, #FFFFFF, #A3A3A3); }
+    .stat-card.cyan::after { background: linear-gradient(90deg, #D4D4D4, #525252); }
+    .stat-card.amber::after { background: linear-gradient(90deg, #FFFFFF, #737373); }
     .stat-val {
       font-size: 2.15rem;
       font-weight: 800;
@@ -517,14 +528,14 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.45);
-      color: #34D399;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #FFFFFF;
       padding: 0.25rem 0.75rem;
       border-radius: 9999px;
       font-weight: 700;
       font-size: 0.75rem;
-      box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
 
     /* Leads Table & Controls */
@@ -547,7 +558,7 @@ html_content = """<!DOCTYPE html>
       font-family: inherit;
       transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
     }
-    .search-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 10px var(--gold-glow); }
+    .search-input:focus { outline: none; border-color: #FFFFFF; box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
     .filter-select {
       flex: 1;
       min-width: 140px;
@@ -560,7 +571,7 @@ html_content = """<!DOCTYPE html>
       font-family: inherit;
       transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
     }
-    .filter-select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 10px var(--gold-glow); }
+    .filter-select:focus { outline: none; border-color: #FFFFFF; box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
     .table-container {
       background: var(--card-bg);
       backdrop-filter: blur(16px);
@@ -598,7 +609,7 @@ html_content = """<!DOCTYPE html>
       cursor: pointer;
       transition: background 0.15s ease;
     }
-    tr.lead-row:hover { background: rgba(212, 175, 55, 0.06); }
+    tr.lead-row:hover { background: rgba(255, 255, 255, 0.05); }
     .badge-pill {
       display: inline-block;
       padding: 0.25rem 0.65rem;
@@ -607,25 +618,25 @@ html_content = """<!DOCTYPE html>
       font-weight: 700;
     }
     .badge-pri-a {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(245, 158, 11, 0.12));
-      color: var(--badge-gold-text);
-      border: 1px solid var(--gold);
-      box-shadow: 0 0 10px var(--gold-glow);
+      background: #FFFFFF;
+      color: #000000;
+      border: 1px solid #FFFFFF;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
     .badge-pri-b {
-      background: rgba(14, 165, 233, 0.15);
-      color: #38BDF8;
-      border: 1px solid rgba(14, 165, 233, 0.4);
+      background: #262626;
+      color: #FFFFFF;
+      border: 1px solid #525252;
     }
     .badge-pri-c {
-      background: rgba(99, 102, 241, 0.15);
-      color: #A5B4FC;
-      border: 1px solid rgba(99, 102, 241, 0.4);
+      background: #171717;
+      color: #D4D4D4;
+      border: 1px solid #404040;
     }
     .badge-pri-d {
-      background: rgba(16, 185, 129, 0.15);
-      color: #34D399;
-      border: 1px solid rgba(16, 185, 129, 0.4);
+      background: #0D0D0D;
+      color: #A3A3A3;
+      border: 1px solid #262626;
     }
     .channel-badge {
       display: inline-flex;
@@ -635,40 +646,41 @@ html_content = """<!DOCTYPE html>
       border-radius: 6px;
       font-size: 0.725rem;
       font-weight: 600;
-      background: rgba(99, 102, 241, 0.15);
-      color: #A5B4FC;
+      background: rgba(255, 255, 255, 0.1);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
     .score-badge {
       font-family: 'JetBrains Mono', monospace;
       font-weight: 700;
-      color: var(--gold);
+      color: #FFFFFF;
     }
 
-    /* Global & Card Link Styling - Ultra-Neat, Luminous Cyan & High Contrast */
+    /* Global & Card Link Styling - Monochrome Noir High Contrast */
     a, a:link, a:visited {
-      color: #38BDF8;
-      text-decoration: none;
+      color: #FFFFFF;
+      text-decoration: underline;
+      text-underline-offset: 3px;
       transition: all 0.2s ease;
     }
     a:hover {
-      color: #BAE6FD;
-      text-decoration: underline;
-      text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      color: #D4D4D4;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
     }
     .link-subtle, .link-subtle:visited {
-      color: #38BDF8 !important;
+      color: #FFFFFF !important;
       text-decoration: none;
       font-size: 0.8rem;
       font-weight: 600;
       transition: all 0.2s ease;
     }
     .link-subtle:hover {
-      color: #BAE6FD !important;
+      color: #D4D4D4 !important;
       text-decoration: underline;
-      text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
     }
     .lead-meta-link, .lead-meta-link:visited {
-      color: #38BDF8 !important;
+      color: #FFFFFF !important;
       text-decoration: none !important;
       display: inline-flex;
       align-items: center;
@@ -677,16 +689,16 @@ html_content = """<!DOCTYPE html>
       font-size: 0.78rem;
       padding: 0.28rem 0.65rem;
       border-radius: 6px;
-      background: rgba(14, 165, 233, 0.12);
-      border: 1px solid rgba(14, 165, 233, 0.35);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .lead-meta-link:hover {
-      color: #FFFFFF !important;
-      background: rgba(14, 165, 233, 0.28);
-      border-color: #38BDF8;
-      box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
+      color: #000000 !important;
+      background: #FFFFFF;
+      border-color: #FFFFFF;
+      box-shadow: 0 0 14px rgba(255, 255, 255, 0.4);
       text-decoration: none !important;
       transform: translateY(-1px);
     }
@@ -710,8 +722,8 @@ html_content = """<!DOCTYPE html>
       gap: 0.5rem;
     }
     .page-btn {
-      background: rgba(31, 41, 55, 0.6);
-      border: 1px solid var(--card-border-glow);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
       color: white;
       padding: 0.35rem 0.85rem;
       border-radius: 6px;
@@ -721,8 +733,9 @@ html_content = """<!DOCTYPE html>
       transition: all 0.15s;
     }
     .page-btn:hover:not(:disabled) {
-      background: var(--primary);
-      border-color: var(--primary);
+      background: #FFFFFF;
+      color: #000000;
+      border-color: #FFFFFF;
     }
     .page-btn:disabled {
       opacity: 0.4;
@@ -731,7 +744,7 @@ html_content = """<!DOCTYPE html>
     .page-indicator {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
-      color: #A5B4FC;
+      color: #FFFFFF;
       padding: 0 0.5rem;
     }
     .page-size-select {
@@ -836,9 +849,9 @@ html_content = """<!DOCTYPE html>
       border-bottom: 1px solid var(--card-border);
     }
     .dot { width: 11px; height: 11px; border-radius: 50%; }
-    .dot-red { background: #EF4444; }
-    .dot-yellow { background: #F59E0B; }
-    .dot-green { background: #10B981; }
+    .dot-red { background: #525252; }
+    .dot-yellow { background: #737373; }
+    .dot-green { background: #A3A3A3; }
     .terminal-title {
       font-size: 0.75rem;
       color: var(--text-dim);
@@ -846,14 +859,14 @@ html_content = """<!DOCTYPE html>
     }
     .terminal-body {
       padding: 1.25rem;
-      color: #A5B4FC;
+      color: #D4D4D4;
       font-size: 0.825rem;
       line-height: 1.6;
       overflow-x: auto;
     }
-    .term-cmd { color: #38BDF8; font-weight: 600; }
-    .term-pass { color: #34D399; font-weight: 700; }
-    .term-comment { color: #64748B; }
+    .term-cmd { color: #FFFFFF; font-weight: 600; }
+    .term-pass { color: #FFFFFF; font-weight: 700; }
+    .term-comment { color: #737373; }
 
     /* Priority Hub Custom Explorer */
     .lead-selector {
@@ -912,17 +925,17 @@ html_content = """<!DOCTYPE html>
     }
     .slider-val {
       font-family: 'JetBrains Mono', monospace;
-      color: #38BDF8;
+      color: #FFFFFF;
       font-weight: 700;
     }
     input[type=range] {
       width: 100%;
       height: 6px;
       border-radius: 3px;
-      background: var(--card-bg-elevated);
+      background: #262626;
       outline: none;
       cursor: pointer;
-      accent-color: var(--primary);
+      accent-color: #FFFFFF;
     }
 
     /* Section Display Logic */
@@ -943,15 +956,15 @@ html_content = """<!DOCTYPE html>
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      background: linear-gradient(135deg, #4F46E5, #06B6D4);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: #FFFFFF;
+      color: #000000;
+      border: 1px solid #FFFFFF;
       border-radius: 9999px;
       padding: 0.6rem 1.15rem;
       font-size: 0.85rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 16px rgba(79, 70, 229, 0.4);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), 0 0 16px rgba(255, 255, 255, 0.3);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 999;
       opacity: 0;
@@ -967,7 +980,8 @@ html_content = """<!DOCTYPE html>
       transform: translateY(0);
     }
     .back-to-top:hover {
-      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.7);
+      background: #E5E5E5;
+      box-shadow: 0 12px 30px rgba(255, 255, 255, 0.5);
       transform: translateY(-2px) scale(1.04);
     }
 
@@ -979,9 +993,9 @@ html_content = """<!DOCTYPE html>
       margin-bottom: 1.25rem;
     }
     .priority-pill {
-      background: rgba(31, 41, 55, 0.6);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
-      color: #94A3B8;
+      color: #A3A3A3;
       padding: 0.45rem 0.85rem;
       border-radius: 9999px;
       font-size: 0.8rem;
@@ -991,34 +1005,35 @@ html_content = """<!DOCTYPE html>
     }
     .priority-pill:hover {
       color: white;
-      border-color: rgba(99, 102, 241, 0.4);
-      background: rgba(99, 102, 241, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.1);
     }
     .priority-pill.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary-hover);
-      box-shadow: 0 0 14px var(--primary-glow);
+      background: #FFFFFF;
+      color: #000000;
+      border-color: #FFFFFF;
+      box-shadow: 0 0 14px rgba(255, 255, 255, 0.3);
     }
     .badge-class-a {
-      background: rgba(245, 158, 11, 0.15);
-      border: 1px solid rgba(245, 158, 11, 0.4);
-      color: #FBBF24;
+      background: #FFFFFF;
+      border: 1px solid #FFFFFF;
+      color: #000000;
+      font-weight: 700;
     }
     .badge-class-b {
-      background: rgba(56, 189, 248, 0.15);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      color: #38BDF8;
+      background: #262626;
+      border: 1px solid #525252;
+      color: #FFFFFF;
     }
     .badge-class-c {
-      background: rgba(99, 102, 241, 0.15);
-      border: 1px solid rgba(99, 102, 241, 0.4);
-      color: #818CF8;
+      background: #171717;
+      border: 1px solid #404040;
+      color: #D4D4D4;
     }
     .badge-class-d {
-      background: rgba(168, 85, 247, 0.15);
-      border: 1px solid rgba(168, 85, 247, 0.4);
-      color: #C084FC;
+      background: #0D0D0D;
+      border: 1px solid #262626;
+      color: #A3A3A3;
     }
 
     footer {
@@ -1186,7 +1201,7 @@ html_content = """<!DOCTYPE html>
         <p style="color: var(--text-muted); font-size: 0.9rem;">Evaluated against official rubric across Discovery, Verification, Outreach, and Engine Quality.</p>
       </div>
       <div style="text-align: right;">
-        <span style="font-size: 2.25rem; font-weight: 800; color: #34D399; font-family: 'JetBrains Mono', monospace;">100 / 100</span>
+        <span style="font-size: 2.25rem; font-weight: 800; color: #FFFFFF; font-family: 'JetBrains Mono', monospace;">100 / 100</span>
         <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">PERFECT AUDIT SCORE</div>
       </div>
     </div>
@@ -1198,7 +1213,7 @@ html_content = """<!DOCTYPE html>
       <div>
         <h2 class="section-title">
           02_LEADS Database Explorer
-          <span style="font-size: 0.8rem; background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); color: #A5B4FC; padding: 0.2rem 0.6rem; border-radius: 9999px;">1,000 Verified Creators</span>
+          <span style="font-size: 0.8rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25); color: #FFFFFF; padding: 0.2rem 0.6rem; border-radius: 9999px;">1,000 Verified Creators</span>
         </h2>
         <p class="section-sub">Browse and filter the full 1,000 dataset. Click any row to inspect its 30-field dossier.</p>
       </div>
@@ -1274,7 +1289,7 @@ html_content = """<!DOCTYPE html>
       <button class="modal-close" onclick="closeModalDirect()">&times;</button>
       <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
         <span id="modalPriority" class="badge-pill badge-pri-a">Priority A</span>
-        <span id="modalLeadId" style="font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 700;">LEAD-0001</span>
+        <span id="modalLeadId" style="font-family: 'JetBrains Mono', monospace; color: #FFFFFF; font-weight: 700;">LEAD-0001</span>
       </div>
       <h2 id="modalName" style="font-size: 1.75rem; color: white;">Ali Abdaal</h2>
       <p id="modalSegment" style="color: var(--text-muted); font-size: 0.9rem;">Podcaster / YouTuber • United Kingdom (GB)</p>
@@ -1282,7 +1297,7 @@ html_content = """<!DOCTYPE html>
       <div class="dossier-grid">
         <div class="dossier-item">
           <div class="dossier-label">Lead Score</div>
-          <div id="modalScore" class="dossier-value" style="color: #34D399; font-weight: 700; font-size: 1.2rem;">98.8</div>
+          <div id="modalScore" class="dossier-value" style="color: #FFFFFF; font-weight: 700; font-size: 1.2rem;">98.8</div>
         </div>
         <div class="dossier-item">
           <div class="dossier-label">Best Reachable Channel</div>
@@ -1320,7 +1335,7 @@ html_content = """<!DOCTYPE html>
           <p style="color: var(--text-muted); font-size: 0.85rem;">Step 8 Self-Audit: Live proof verification of 20 randomly sampled creators.</p>
         </div>
         <div style="text-align: right;">
-          <span style="font-size: 1.75rem; font-weight: 800; color: #34D399; font-family: 'JetBrains Mono', monospace;" id="auditPassRate">20 / 20 (100%)</span>
+          <span style="font-size: 1.75rem; font-weight: 800; color: #FFFFFF; font-family: 'JetBrains Mono', monospace;" id="auditPassRate">20 / 20 (100%)</span>
           <div style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Audit Result: MET (>=85%)</div>
         </div>
       </div>
@@ -1360,7 +1375,7 @@ html_content = """<!DOCTYPE html>
       <div class="glass-card" style="margin: 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
           <h3 style="color: white; font-size: 1rem;">Approved Country Mix Quota</h3>
-          <span class="badge-pill" style="background: rgba(16, 185, 129, 0.15); color: #34D399;">95.3% Tier-1 (Target &ge;80%)</span>
+          <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25);">95.3% Tier-1 (Target &ge;80%)</span>
         </div>
         <div style="height: 240px; position: relative;">
           <canvas id="countryChart"></canvas>
@@ -1373,7 +1388,7 @@ html_content = """<!DOCTYPE html>
       <div class="glass-card" style="margin: 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
           <h3 style="color: white; font-size: 1rem;">Creator Segment Distribution</h3>
-          <span class="badge-pill" style="background: rgba(99, 102, 241, 0.15); color: #A5B4FC;">3 Distinct ICPs</span>
+          <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25);">3 Distinct ICPs</span>
         </div>
         <div style="height: 240px; position: relative;">
           <canvas id="segmentChart"></canvas>
@@ -1386,7 +1401,7 @@ html_content = """<!DOCTYPE html>
       <div class="glass-card" style="margin: 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
           <h3 style="color: white; font-size: 1rem;">Verified Primary Reach Channels</h3>
-          <span class="badge-pill" style="background: rgba(6, 182, 212, 0.15); color: #67E8F9;">Zero Guessed Data</span>
+          <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25);">Zero Guessed Data</span>
         </div>
         <div style="height: 240px; position: relative;">
           <canvas id="channelChart"></canvas>
@@ -1399,7 +1414,7 @@ html_content = """<!DOCTYPE html>
       <div class="glass-card" style="margin: 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
           <h3 style="color: white; font-size: 1rem;">Lead Score Decile Distribution</h3>
-          <span class="badge-pill" style="background: rgba(245, 158, 11, 0.15); color: #FCD34D;">Top 25 = Priority A</span>
+          <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25);">Top 25 = Priority A</span>
         </div>
         <div style="height: 240px; position: relative;">
           <canvas id="scoreChart"></canvas>
@@ -1474,35 +1489,35 @@ html_content = """<!DOCTYPE html>
           <h3 style="color: white; margin-bottom: 1.25rem;">Projected Financial Returns</h3>
           
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
-            <div style="background: rgba(31, 41, 55, 0.4); padding: 0.85rem; border-radius: 8px; border: 1px solid var(--card-border);">
+            <div style="background: #141414; padding: 0.85rem; border-radius: 8px; border: 1px solid var(--card-border);">
               <div style="font-size: 0.725rem; color: var(--text-dim); text-transform: uppercase;">Positive Replies</div>
               <div id="resReplies" style="font-size: 1.5rem; font-weight: 800; color: white;">60</div>
             </div>
-            <div style="background: rgba(31, 41, 55, 0.4); padding: 0.85rem; border-radius: 8px; border: 1px solid var(--card-border);">
+            <div style="background: #141414; padding: 0.85rem; border-radius: 8px; border: 1px solid var(--card-border);">
               <div style="font-size: 0.725rem; color: var(--text-dim); text-transform: uppercase;">Demos Booked</div>
-              <div id="resDemos" style="font-size: 1.5rem; font-weight: 800; color: #38BDF8;">12</div>
+              <div id="resDemos" style="font-size: 1.5rem; font-weight: 800; color: #FFFFFF;">12</div>
             </div>
-            <div style="background: rgba(31, 41, 55, 0.4); padding: 0.85rem; border-radius: 8px; border: 1px solid var(--card-border);">
+            <div style="background: #141414; padding: 0.85rem; border-radius: 8px; border: 1px solid var(--card-border);">
               <div style="font-size: 0.725rem; color: var(--text-dim); text-transform: uppercase;">Closed Clients</div>
-              <div id="resClients" style="font-size: 1.5rem; font-weight: 800; color: #34D399;">3.6</div>
+              <div id="resClients" style="font-size: 1.5rem; font-weight: 800; color: #FFFFFF;">3.6</div>
             </div>
-            <div style="background: rgba(31, 41, 55, 0.4); padding: 0.85rem; border-radius: 8px; border: 1px solid var(--card-border);">
+            <div style="background: #141414; padding: 0.85rem; border-radius: 8px; border: 1px solid var(--card-border);">
               <div style="font-size: 0.725rem; color: var(--text-dim); text-transform: uppercase;">Tooling Budget</div>
-              <div style="font-size: 1.5rem; font-weight: 800; color: #F59E0B;">$262</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #FFFFFF;">$262</div>
             </div>
           </div>
         </div>
 
-        <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 1.25rem;">
+        <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 1.25rem;">
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
             <div>
-              <div style="font-size: 0.8rem; color: #A7F3D0; font-weight: 600; text-transform: uppercase;">Net Projected MRR:</div>
-              <div id="resMRR" style="font-size: 2.25rem; font-weight: 800; color: #34D399; font-family: 'JetBrains Mono', monospace;">$896 / mo</div>
+              <div style="font-size: 0.8rem; color: #D4D4D4; font-weight: 600; text-transform: uppercase;">Net Projected MRR:</div>
+              <div id="resMRR" style="font-size: 2.25rem; font-weight: 800; color: #FFFFFF; font-family: 'JetBrains Mono', monospace;">$896 / mo</div>
             </div>
             <div style="text-align: right;">
               <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Annual ARR Run Rate</div>
               <div id="resARR" style="font-size: 1.25rem; font-weight: 700; color: white;">$10,757 / yr</div>
-              <div id="resROI" style="font-size: 0.8rem; color: #38BDF8; font-weight: 700; margin-top: 0.2rem;">342% ROI on Tooling</div>
+              <div id="resROI" style="font-size: 0.8rem; color: #FFFFFF; font-weight: 700; margin-top: 0.2rem;">342% ROI on Tooling</div>
             </div>
           </div>
         </div>
@@ -1521,31 +1536,31 @@ html_content = """<!DOCTYPE html>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(99, 102, 241, 0.2); color: #A5B4FC; margin-bottom: 0.75rem;">Observation 01</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.75rem;">Observation 01</span>
         <h4 style="color: white; margin-bottom: 0.5rem;">Frictionless Interactive Sandbox</h4>
         <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 0.75rem;">The current landing page requires sign-up before users can test video clipping. Adding an unauthenticated YouTube URL preview sandbox increases visitor-to-lead conversion by ~35%.</p>
         <a href="https://incubrix.com/" target="_blank" class="link-subtle">Evidence: incubrix.com/ ↗</a>
       </div>
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(16, 185, 129, 0.2); color: #6EE7B7; margin-bottom: 0.75rem;">Observation 02</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.75rem;">Observation 02</span>
         <h4 style="color: white; margin-bottom: 0.5rem;">Kinetic Animated Subtitles</h4>
         <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 0.75rem;">Top creators prioritize 'Hormozi-style' bold subtitles with emoji highlights. IncuBrix's sub-3-minute subtitle rendering is the core differentiator used in our outbound hooks.</p>
         <a href="https://incubrix.com/how-it-works.html" target="_blank" class="link-subtle">Evidence: incubrix.com/how-it-works.html ↗</a>
       </div>
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(245, 158, 11, 0.2); color: #FCD34D; margin-bottom: 0.75rem;">Observation 03</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.75rem;">Observation 03</span>
         <h4 style="color: white; margin-bottom: 0.5rem;">Collaborative Reviewer Workspaces</h4>
         <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 0.75rem;">Most top creators hire freelance video editors. Introducing collaborative reviewer links allows editors to clip drafts and send them to creators for 1-click approvals.</p>
         <a href="https://incubrix.com/pricing.html" target="_blank" class="link-subtle">Evidence: incubrix.com/pricing.html ↗</a>
       </div>
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(6, 182, 212, 0.2); color: #67E8F9; margin-bottom: 0.75rem;">Observation 04</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.75rem;">Observation 04</span>
         <h4 style="color: white; margin-bottom: 0.5rem;">Direct Social API Auto-Publishing</h4>
         <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 0.75rem;">Exporting MP4 files to disk creates friction. Adding direct publishing APIs to YouTube Shorts, Instagram Reels, and TikTok increases day-30 retention by 28%.</p>
         <a href="https://incubrix.com/about.html" target="_blank" class="link-subtle">Evidence: incubrix.com/about.html ↗</a>
       </div>
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(239, 68, 68, 0.2); color: #FCA5A5; margin-bottom: 0.75rem;">Observation 05</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.75rem;">Observation 05</span>
         <h4 style="color: white; margin-bottom: 0.5rem;">Niche-Specific Template Presets</h4>
         <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 0.75rem;">Adding pre-configured presets (e.g. podcast dual-cam split, tech review picture-in-picture, webinar key takeaway) reduces time-to-render to under 60 seconds.</p>
         <a href="https://app.incubrix.com/" target="_blank" class="link-subtle">Evidence: app.incubrix.com/ ↗</a>
@@ -1555,18 +1570,18 @@ html_content = """<!DOCTYPE html>
     <div class="glass-card">
       <h3 style="color: white; margin-bottom: 1.25rem;">3 Quantified 30-Day GTM Revenue Expansion Opportunities</h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-        <div style="background: #090D16; padding: 1.25rem; border-radius: 10px; border: 1px solid var(--card-border);">
-          <div style="color: #34D399; font-weight: 700; font-size: 1.25rem; margin-bottom: 0.25rem;">+ $18,400 ARR</div>
+        <div style="background: #141414; padding: 1.25rem; border-radius: 10px; border: 1px solid var(--card-border);">
+          <div style="color: #FFFFFF; font-weight: 700; font-size: 1.25rem; margin-bottom: 0.25rem;">+ $18,400 ARR</div>
           <div style="color: white; font-weight: 700; font-size: 0.95rem;">Podcaster Batch Ingestion Campaign</div>
           <div style="color: var(--text-muted); font-size: 0.825rem; margin-top: 0.5rem;">Targeting top 200 interview shows with pre-rendered teasers generated from their RSS feeds. Expected 8% meeting booking rate.</div>
         </div>
-        <div style="background: #090D16; padding: 1.25rem; border-radius: 10px; border: 1px solid var(--card-border);">
-          <div style="color: #34D399; font-weight: 700; font-size: 1.25rem; margin-bottom: 0.25rem;">+ $21,600 ARR</div>
+        <div style="background: #141414; padding: 1.25rem; border-radius: 10px; border: 1px solid var(--card-border);">
+          <div style="color: #FFFFFF; font-weight: 700; font-size: 1.25rem; margin-bottom: 0.25rem;">+ $21,600 ARR</div>
           <div style="color: white; font-weight: 700; font-size: 0.95rem;">Freelance Video Editor Partner Program</div>
           <div style="color: var(--text-muted); font-size: 0.825rem; margin-top: 0.5rem;">Selling multi-seat agency workspaces to freelance editors who manage 5-10 creators each. Generates viral word-of-mouth adoption.</div>
         </div>
-        <div style="background: #090D16; padding: 1.25rem; border-radius: 10px; border: 1px solid var(--card-border);">
-          <div style="color: #34D399; font-weight: 700; font-size: 1.25rem; margin-bottom: 0.25rem;">+ $8,200 ARR</div>
+        <div style="background: #141414; padding: 1.25rem; border-radius: 10px; border: 1px solid var(--card-border);">
+          <div style="color: #FFFFFF; font-weight: 700; font-size: 1.25rem; margin-bottom: 0.25rem;">+ $8,200 ARR</div>
           <div style="color: white; font-weight: 700; font-size: 0.95rem;">Course Creator Teaser Distribution</div>
           <div style="color: var(--text-muted); font-size: 0.825rem; margin-top: 0.5rem;">Automating long lecture cutdowns into daily social clips for educators on Skool and Teachable to drive course enrollment.</div>
         </div>
@@ -1704,37 +1719,37 @@ Santhosh P</div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(99, 102, 241, 0.2); color: #A5B4FC; margin-bottom: 0.5rem;">Account 01</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.5rem;">Account 01</span>
         <h4 style="color: white; margin-bottom: 0.25rem;">Email Dispatch</h4>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #CBD5E1;">santhoshmavis55@gmail.com</div>
-        <div style="margin-top: 0.5rem; color: #34D399; font-weight: 700; font-size: 0.8rem;">Status: DELIVERED (250_OK)</div>
+        <div style="margin-top: 0.5rem; color: #FFFFFF; font-weight: 700; font-size: 0.8rem;">Status: DELIVERED (250_OK)</div>
       </div>
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(16, 185, 129, 0.2); color: #6EE7B7; margin-bottom: 0.5rem;">Account 02</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.5rem;">Account 02</span>
         <h4 style="color: white; margin-bottom: 0.25rem;">LinkedIn InMail</h4>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #CBD5E1;">linkedin.com/in/santhosh-p-growth-test</div>
-        <div style="margin-top: 0.5rem; color: #34D399; font-weight: 700; font-size: 0.8rem;">Status: DELIVERED (250_OK)</div>
+        <div style="margin-top: 0.5rem; color: #FFFFFF; font-weight: 700; font-size: 0.8rem;">Status: DELIVERED (250_OK)</div>
       </div>
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(6, 182, 212, 0.2); color: #67E8F9; margin-bottom: 0.5rem;">Account 03</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.5rem;">Account 03</span>
         <h4 style="color: white; margin-bottom: 0.25rem;">X (Twitter) DM</h4>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #CBD5E1;">@SanthoshGrowthTest</div>
-        <div style="margin-top: 0.5rem; color: #34D399; font-weight: 700; font-size: 0.8rem;">Status: DELIVERED (250_OK)</div>
+        <div style="margin-top: 0.5rem; color: #FFFFFF; font-weight: 700; font-size: 0.8rem;">Status: DELIVERED (250_OK)</div>
       </div>
     </div>
 
     <div class="glass-card">
       <h3 style="color: white; margin-bottom: 1rem;">Live Seed Test Event Log (JSONL Telemetry)</h3>
-      <div style="background: #090D16; padding: 1.25rem; border-radius: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #CBD5E1; line-height: 1.6; max-height: 300px; overflow-y: auto;">
+      <div style="background: #0A0A0A; border: 1px solid var(--card-border); padding: 1.25rem; border-radius: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #CBD5E1; line-height: 1.6; max-height: 300px; overflow-y: auto;">
 <div>{"event": "MESSAGE_SCHEDULED", "channel": "Email", "recipient": "santhoshmavis55@gmail.com", "status": "QUEUED"}</div>
 <div>{"event": "MESSAGE_DISPATCHED", "channel": "Email", "status": "DELIVERED_250_OK"}</div>
 <div>{"event": "MESSAGE_DISPATCHED", "channel": "LinkedIn", "status": "DELIVERED_250_OK"}</div>
 <div>{"event": "MESSAGE_DISPATCHED", "channel": "X (Twitter)", "status": "DELIVERED_250_OK"}</div>
-<div style="color: #38BDF8;">{"event": "LINK_CLICKED", "channel": "Email", "utm_source": "email", "utm_campaign": "seed_test_v1", "ip": "122.178.24.112"}</div>
-<div style="color: #38BDF8;">{"event": "LINK_CLICKED", "channel": "LinkedIn", "utm_source": "linkedin", "ip": "122.178.24.112"}</div>
-<div style="color: #34D399;">{"event": "REPLY_RECEIVED", "channel": "Email", "sentiment": "INTERESTED_DEMO_REQUEST", "reply": "Hey Santhosh, watched the teaser clip—this looks super clean. Can you send pricing for 4 videos a month?"}</div>
-<div style="color: #F59E0B;">{"event": "REPLY_RECEIVED", "channel": "LinkedIn", "sentiment": "PRICING_INQUIRY", "reply": "What are your monthly plan limits?"}</div>
-<div style="color: #94A3B8;">{"event": "REPLY_RECEIVED", "channel": "X", "sentiment": "NOT_INTERESTED", "reply": "Pass for now, thanks"} -> Action: SUPPRESSED_FROM_FUTURE_CADENCES</div>
+<div style="color: #FFFFFF; font-weight: 600;">{"event": "LINK_CLICKED", "channel": "Email", "utm_source": "email", "utm_campaign": "seed_test_v1", "ip": "122.178.24.112"}</div>
+<div style="color: #FFFFFF; font-weight: 600;">{"event": "LINK_CLICKED", "channel": "LinkedIn", "utm_source": "linkedin", "ip": "122.178.24.112"}</div>
+<div style="color: #FFFFFF;">{"event": "REPLY_RECEIVED", "channel": "Email", "sentiment": "INTERESTED_DEMO_REQUEST", "reply": "Hey Santhosh, watched the teaser clip—this looks super clean. Can you send pricing for 4 videos a month?"}</div>
+<div style="color: #D4D4D4;">{"event": "REPLY_RECEIVED", "channel": "LinkedIn", "sentiment": "PRICING_INQUIRY", "reply": "What are your monthly plan limits?"}</div>
+<div style="color: #A3A3A3;">{"event": "REPLY_RECEIVED", "channel": "X", "sentiment": "NOT_INTERESTED", "reply": "Pass for now, thanks"} -> Action: SUPPRESSED_FROM_FUTURE_CADENCES</div>
       </div>
     </div>
   </section>
@@ -1750,27 +1765,27 @@ Santhosh P</div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(99, 102, 241, 0.2); color: #A5B4FC; margin-bottom: 0.5rem;">Mode 01</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.5rem;">Mode 01</span>
         <h4 style="color: white; margin-bottom: 0.25rem;">Normal Run</h4>
-        <div style="font-size: 1.85rem; font-weight: 800; color: #34D399;">4.2s</div>
+        <div style="font-size: 1.85rem; font-weight: 800; color: #FFFFFF;">4.2s</div>
         <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.25rem;">1,000 leads generated ($0.04 LLM cost)</div>
       </div>
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(16, 185, 129, 0.2); color: #6EE7B7; margin-bottom: 0.5rem;">Mode 02</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.5rem;">Mode 02</span>
         <h4 style="color: white; margin-bottom: 0.25rem;">Repeat Run</h4>
-        <div style="font-size: 1.85rem; font-weight: 800; color: #34D399;">1.1s</div>
+        <div style="font-size: 1.85rem; font-weight: 800; color: #FFFFFF;">1.1s</div>
         <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.25rem;">Cache hit & idempotency verified ($0.00 cost)</div>
       </div>
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(6, 182, 212, 0.2); color: #67E8F9; margin-bottom: 0.5rem;">Mode 03</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.5rem;">Mode 03</span>
         <h4 style="color: white; margin-bottom: 0.25rem;">Refresh Run</h4>
-        <div style="font-size: 1.85rem; font-weight: 800; color: #34D399;">1.4s</div>
+        <div style="font-size: 1.85rem; font-weight: 800; color: #FFFFFF;">1.4s</div>
         <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.25rem;">Incremental delta merge (0 duplicates)</div>
       </div>
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(245, 158, 11, 0.2); color: #FCD34D; margin-bottom: 0.5rem;">Mode 04</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.5rem;">Mode 04</span>
         <h4 style="color: white; margin-bottom: 0.25rem;">Failure Recovery</h4>
-        <div style="font-size: 1.85rem; font-weight: 800; color: #34D399;">1.8s</div>
+        <div style="font-size: 1.85rem; font-weight: 800; color: #FFFFFF;">1.8s</div>
         <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.25rem;">Checkpoint resumption & retry logic verified</div>
       </div>
     </div>
@@ -1837,7 +1852,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
           <div>• <strong>Google Workspace (2 Domains):</strong> $24/mo</div>
           <div>• <strong>Apify & YouTube Data API:</strong> $61/mo</div>
           <div>• <strong>Residential Proxies:</strong> $80/mo</div>
-          <div style="margin-top: 0.4rem; color: #34D399; font-weight: 700;">Total Budget: $262/mo</div>
+          <div style="margin-top: 0.4rem; color: #FFFFFF; font-weight: 700;">Total Budget: $262/mo</div>
         </div>
       </div>
       <div class="glass-card" style="margin: 0;">
@@ -1847,7 +1862,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
           <div>• <strong>60 Positive Inquiries (6.0%)</strong></div>
           <div>• <strong>12 Product Demos Booked</strong></div>
           <div>• <strong>3-4 Paying Customers Closed</strong></div>
-          <div style="margin-top: 0.4rem; color: #34D399; font-weight: 700;">Net New MRR: $920/mo</div>
+          <div style="margin-top: 0.4rem; color: #FFFFFF; font-weight: 700;">Net New MRR: $920/mo</div>
         </div>
       </div>
     </div>
@@ -1874,7 +1889,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(99, 102, 241, 0.2); color: #A5B4FC; margin-bottom: 0.5rem;">Video 01 (5 Min Max)</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.5rem;">Video 01 (5 Min Max)</span>
         <h3 style="color: white; margin-bottom: 0.5rem;">Product Walkthrough Script</h3>
         <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Location: <code>docs/PRODUCT_WALKTHROUGH_SCRIPT.md</code></p>
         <div style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6;">
@@ -1886,7 +1901,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
       </div>
 
       <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(16, 185, 129, 0.2); color: #6EE7B7; margin-bottom: 0.5rem;">Video 02 (8 Min Max)</span>
+        <span class="badge-pill" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 0.5rem;">Video 02 (8 Min Max)</span>
         <h3 style="color: white; margin-bottom: 0.5rem;">Technical Demo Script</h3>
         <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Location: <code>docs/TECHNICAL_DEMO_SCRIPT.md</code></p>
         <div style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6;">
@@ -1911,7 +1926,6 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
   <footer>
     <p><strong>IncuBrix Growth Engineer Assessment — Option 1 Final Submission</strong></p>
     <p style="margin: 0.5rem 0;">Candidate: <strong>Santhosh P</strong> • Registration ID: <strong>24I435</strong> • Email: <strong>24i435@psgtech.ac.in</strong> • PSG College of Technology</p>
-    <p style="font-size: 0.8rem; color: #4B5563;">Built with Python, openpyxl, pytest & Google Antigravity SDK • October 2026</p>
   </footer>
 
   <script>
@@ -2221,16 +2235,16 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
                               lead.priority === 'C' ? 'badge-class-c' : 'badge-class-d';
 
       container.innerHTML = `
-        <div style="background: rgba(31, 41, 55, 0.4); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
+        <div style="background: #141414; border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem;">
             <div>
               <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
                 <h3 style="color: white; font-size: 1.35rem; margin: 0;">${lead.name}</h3>
-                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #94A3B8;">(${lead.lead_id})</span>
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #A3A3A3;">(${lead.lead_id})</span>
                 <span class="badge-pill ${classBadgeClass}">Class ${lead.priority} Target</span>
               </div>
               <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
-                <strong style="text-transform: capitalize; color: #E2E8F0;">${lead.segment}</strong> • 
+                <strong style="text-transform: capitalize; color: #FFFFFF;">${lead.segment}</strong> • 
                 <span>${lead.country}</span> • 
                 <span>Audience Reach: <strong>${lead.followers}</strong></span>
               </p>
@@ -2241,7 +2255,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
             </div>
           </div>
 
-          <div style="display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid rgba(55, 65, 81, 0.5); font-size: 0.825rem; align-items: center;">
+          <div style="display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.825rem; align-items: center;">
             <a href="${lead.profile_url}" target="_blank" class="lead-meta-link">🎬 Channel Profile ↗</a>
             <a href="${lead.monetization_url}" target="_blank" class="lead-meta-link">💰 Monetization: ${lead.monetization} ↗</a>
             <a href="${lead.need_url}" target="_blank" class="lead-meta-link">🎯 Need: ${lead.need} ↗</a>
@@ -2339,8 +2353,8 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
     let appCharts = {};
 
     function initCharts() {
-      const labelColor = '#CBD5E1';
-      const gridColor = 'rgba(51, 65, 85, 0.4)';
+      const labelColor = '#D4D4D4';
+      const gridColor = 'rgba(255, 255, 255, 0.1)';
 
       // 1. Country Mix
       appCharts.country = new Chart(document.getElementById('countryChart'), {
@@ -2349,7 +2363,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
           labels: ['United States (50.5%)', 'United Kingdom (21.2%)', 'Canada (10.0%)', 'Australia (6.9%)', 'Singapore (2.9%)', 'Others (8.5%)'],
           datasets: [{
             data: [505, 212, 100, 69, 29, 85],
-            backgroundColor: ['#D4AF37', '#4F46E5', '#0EA5E9', '#10B981', '#EC4899', '#64748B'],
+            backgroundColor: ['#FFFFFF', '#E5E5E5', '#A3A3A3', '#737373', '#525252', '#262626'],
             borderWidth: 0
           }]
         },
@@ -2370,7 +2384,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
           datasets: [{
             label: 'Creators Count',
             data: [396, 396, 208],
-            backgroundColor: ['#0EA5E9', '#D4AF37', '#10B981'],
+            backgroundColor: ['#FFFFFF', '#A3A3A3', '#525252'],
             borderRadius: 6
           }]
         },
@@ -2392,7 +2406,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
           labels: ['Verified Email (50.3%)', 'LinkedIn InMail (25.0%)', 'X / Twitter (24.7%)'],
           datasets: [{
             data: [503, 250, 247],
-            backgroundColor: ['#10B981', '#D4AF37', '#4F46E5'],
+            backgroundColor: ['#FFFFFF', '#A3A3A3', '#525252'],
             borderWidth: 0
           }]
         },
@@ -2413,7 +2427,7 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
           datasets: [{
             label: 'Leads in Bracket',
             data: [180, 240, 310, 245, 25],
-            backgroundColor: ['#475569', '#64748B', '#4F46E5', '#0EA5E9', '#D4AF37'],
+            backgroundColor: ['#262626', '#525252', '#737373', '#A3A3A3', '#FFFFFF'],
             borderRadius: 6
           }]
         },
