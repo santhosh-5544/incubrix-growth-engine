@@ -1073,6 +1073,69 @@ html_content = """<!DOCTYPE html>
       font-weight: 700;
     }
 
+    /* Video Presentation Showcase */
+    .video-card-player {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000000;
+      border: 1px solid var(--card-border-glow);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+      margin-bottom: 1rem;
+    }
+    .video-card-player video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/9;
+      background: #000000;
+      object-fit: contain;
+    }
+    .video-controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+    }
+    .chapter-pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+      padding: 0.75rem;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .chapter-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #CBD5E1;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .chapter-pill:hover {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: #34D399;
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+    .theater-modal-content {
+      width: 90vw;
+      max-width: 1100px;
+      background: #0A0E17;
+      border: 1px solid var(--card-border-glow);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+      position: relative;
+    }
+
     footer {
       border-top: 1px solid var(--card-border);
       padding: 3rem 2rem;
@@ -1919,45 +1982,163 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
   <section id="section-videos" class="container portal-section">
     <div class="section-header">
       <div>
-        <h2 class="section-title">Video Walkthrough Scripts & Defense Guide</h2>
-        <p class="section-sub">Unedited scripts matching the exact requirements for the 5-minute Product Walkthrough and 8-minute Technical Demo.</p>
+        <h2 class="section-title">Video Walkthrough Presentations & Live Defense Guide</h2>
+        <p class="section-sub">HD project demo videos with synchronized candidate narration, interactive playback controls, scene chapter scrubbing, and live interview defense preparation.</p>
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-      <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(56, 189, 248, 0.12); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35); margin-bottom: 0.5rem;">Video 01 (5 Min Max)</span>
-        <h3 style="color: white; margin-bottom: 0.5rem;">Product Walkthrough Script</h3>
-        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Location: <code>docs/PRODUCT_WALKTHROUGH_SCRIPT.md</code></p>
-        <div style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6;">
-          <p>• <strong>0:00 - 1:00:</strong> Introduction & Candidate background.</p>
-          <p>• <strong>1:00 - 2:30:</strong> IncuBrix product evaluation & 5 evidence-backed observations on incubrix.com.</p>
-          <p>• <strong>2:30 - 3:45:</strong> 3 Quantified 30-Day GTM opportunities (Podcasters, Editors, Course creators).</p>
-          <p>• <strong>3:45 - 5:00:</strong> 3-touch sequence walkthrough and conversion strategy.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem;">
+      <!-- VIDEO 01 CARD -->
+      <div class="glass-card" style="margin: 0; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span class="badge-pill" style="background: rgba(56, 189, 248, 0.12); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35);">Video 01 (5 Min Max)</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #34D399; font-weight: 700;">HD 720p • 3.3 Min</span>
+          </div>
+          <h3 style="color: white; margin-bottom: 0.25rem;">Product Walkthrough & Growth Audit</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+            Candidate: <strong>Santhosh P</strong> • Script: <a href="https://github.com/santhosh-5544/incubrix-growth-engine/blob/main/docs/PRODUCT_WALKTHROUGH_SCRIPT.md" target="_blank" class="link-subtle">docs/PRODUCT_WALKTHROUGH_SCRIPT.md ↗</a>
+          </p>
+
+          <!-- Embedded Video Player -->
+          <div class="video-card-player">
+            <video id="videoPlayer1" controls playsinline preload="metadata" poster="videos/poster_video1.png">
+              <source src="videos/video_01_product_walkthrough.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Video Actions -->
+          <div class="video-controls-bar">
+            <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
+              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="playPauseVideo('videoPlayer1')">⏯️ Play / Pause</button>
+              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="openTheater('videos/video_01_product_walkthrough.mp4', 'Video 01: Product Walkthrough & Growth Audit')">⛶ Theater Mode</button>
+            </div>
+            <a href="videos/video_01_product_walkthrough.mp4" download class="btn btn-download" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">⬇️ Download MP4 (3.1 MB)</a>
+          </div>
+
+          <!-- Chapter Seek Buttons -->
+          <div style="font-size: 0.725rem; color: var(--text-dim); margin-bottom: 0.35rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Scrub to Chapter:</div>
+          <div class="chapter-pills-wrap">
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 0)">[00:00] Intro & Brand</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 28.7)">[00:28] Repurposing & Subtitles</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 62.8)">[01:02] Pricing & Rollover</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 94.9)">[01:34] Omni-Channel Hub</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 130.0)">[02:10] 3 GTM Levers</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer1', 166.1)">[02:46] Unit Economics</button>
+          </div>
+
+          <!-- Script Line Items -->
+          <div style="font-size: 0.825rem; color: #CBD5E1; line-height: 1.6; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.75rem;">
+            <div>• <strong>0:00 - 0:40:</strong> IncuBrix Creator OS overview & core value proposition.</div>
+            <div>• <strong>0:40 - 1:30:</strong> Obs 1: Video clip repurposing & kinetic karaoke subtitles.</div>
+            <div>• <strong>1:30 - 2:20:</strong> Obs 2: Credit economy & 1-year rollover policy vs 30d Opus Clip.</div>
+            <div>• <strong>2:20 - 3:45:</strong> Obs 3, 4, 5: Omni-channel syndication, voice dubbing, & frictionless TTV.</div>
+            <div>• <strong>3:45 - 5:00:</strong> 3 Quantified 30-Day GTM opportunities (Podcasters, Editors, Course creators).</div>
+          </div>
         </div>
       </div>
 
-      <div class="glass-card" style="margin: 0;">
-        <span class="badge-pill" style="background: rgba(99, 102, 241, 0.12); color: #818CF8; border: 1px solid rgba(99, 102, 241, 0.35); margin-bottom: 0.5rem;">Video 02 (8 Min Max)</span>
-        <h3 style="color: white; margin-bottom: 0.5rem;">Technical Demo Script</h3>
-        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Location: <code>docs/TECHNICAL_DEMO_SCRIPT.md</code></p>
-        <div style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6;">
-          <p>• <strong>0:00 - 1:30:</strong> Test execution with <code>pytest tests/</code> (14/14 passed).</p>
-          <p>• <strong>1:30 - 3:30:</strong> Normal engine run demonstration with <code>python main.py --mode run</code>.</p>
-          <p>• <strong>3:30 - 5:30:</strong> Failure recovery demo with <code>python main.py --mode fail-test</code>.</p>
-          <p>• <strong>5:30 - 8:00:</strong> Excel workbook formula audit (AC and AD checks, country distribution).</p>
+      <!-- VIDEO 02 CARD -->
+      <div class="glass-card" style="margin: 0; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span class="badge-pill" style="background: rgba(99, 102, 241, 0.12); color: #818CF8; border: 1px solid rgba(99, 102, 241, 0.35);">Video 02 (8 Min Max)</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #34D399; font-weight: 700;">HD 720p • 3.4 Min</span>
+          </div>
+          <h3 style="color: white; margin-bottom: 0.25rem;">Technical Demo & Engine Defense</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+            Candidate: <strong>Santhosh P</strong> • Script: <a href="https://github.com/santhosh-5544/incubrix-growth-engine/blob/main/docs/TECHNICAL_DEMO_SCRIPT.md" target="_blank" class="link-subtle">docs/TECHNICAL_DEMO_SCRIPT.md ↗</a>
+          </p>
+
+          <!-- Embedded Video Player -->
+          <div class="video-card-player">
+            <video id="videoPlayer2" controls playsinline preload="metadata" poster="videos/poster_video2.png">
+              <source src="videos/video_02_technical_demo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Video Actions -->
+          <div class="video-controls-bar">
+            <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
+              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="playPauseVideo('videoPlayer2')">⏯️ Play / Pause</button>
+              <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="openTheater('videos/video_02_technical_demo.mp4', 'Video 02: Technical Demo & Engine Defense')">⛶ Theater Mode</button>
+            </div>
+            <a href="videos/video_02_technical_demo.mp4" download class="btn btn-download" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">⬇️ Download MP4 (3.2 MB)</a>
+          </div>
+
+          <!-- Chapter Seek Buttons -->
+          <div style="font-size: 0.725rem; color: var(--text-dim); margin-bottom: 0.35rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Scrub to Chapter:</div>
+          <div class="chapter-pills-wrap">
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 0)">[00:00] Architecture</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 33.9)">[00:33] Pytest 14/14 Pass</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 62.5)">[01:02] Normal Run (1,000)</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 100.2)">[01:40] Refresh & Fail-Test</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 135.7)">[02:15] Excel Formula Audit</button>
+            <button class="chapter-pill" onclick="seekVideo('videoPlayer2', 170.0)">[02:50] Seed Test & Telemetry</button>
+          </div>
+
+          <!-- Script Line Items -->
+          <div style="font-size: 0.825rem; color: #CBD5E1; line-height: 1.6; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.75rem;">
+            <div>• <strong>0:00 - 1:00:</strong> Modular architecture, config.yaml, & zero hardcoded secrets.</div>
+            <div>• <strong>1:00 - 2:00:</strong> Pytest test execution (14/14 passed in 0.42s).</div>
+            <div>• <strong>2:00 - 3:30:</strong> Normal engine run (1,000 verified leads generated in 1.8s).</div>
+            <div>• <strong>3:30 - 5:00:</strong> Refresh mode (0 duplicates) & failure recovery with backoff.</div>
+            <div>• <strong>5:00 - 7:30:</strong> Excel formula audit (AC, AD, 04_SELF_CHECK MET, 100/100).</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="glass-card" style="margin-top: 1.5rem;">
-      <h3 style="color: white; margin-bottom: 0.75rem;">Live Interview Defense Cheat Sheet (New Document)</h3>
-      <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.5rem;">
-        Detailed walkthrough for tracing 5 random leads, executing live refresh commands on new inputs, and answering the senior trade-off question: <em>"Explain one decision you would change in v2"</em>.
+    <!-- Candidate Live Interview Demonstration Guarantee -->
+    <div class="glass-card" style="margin-top: 1.5rem; border: 1px solid rgba(16, 185, 129, 0.45); background: rgba(16, 185, 129, 0.06); box-shadow: 0 8px 30px rgba(16, 185, 129, 0.12);">
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem;">
+        <span style="display: inline-block; width: 10px; height: 10px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981;"></span>
+        <h3 style="color: #FFFFFF; font-size: 1.15rem; margin: 0;">⚡ Candidate Live Interview Demonstration Guarantee</h3>
+      </div>
+      <p style="color: #CBD5E1; font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.85rem;">
+        Candidate <strong>Santhosh P</strong> (24I435, PSG College of Technology) is 100% prepared to execute any live demonstration, recovery simulation, or formula inspection during the technical interview:
       </p>
-      <a href="https://github.com/santhosh-5544/incubrix-growth-engine/blob/main/docs/LIVE_INTERVIEW_DEFENSE_CHEAT_SHEET.md" target="_blank" class="link-subtle" style="font-size: 0.9rem; font-weight: 600;">Open LIVE_INTERVIEW_DEFENSE_CHEAT_SHEET.md ↗</a>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; font-size: 0.825rem; color: #CBD5E1;">
+        <div style="background: rgba(0, 0, 0, 0.45); padding: 0.75rem 0.95rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08);">
+          <strong style="color: #34D399;">1. Live Pytest Run:</strong> Execute <code>python -m pytest tests/ -v</code> in real time to verify all 14 unit and integration tests pass cleanly.
+        </div>
+        <div style="background: rgba(0, 0, 0, 0.45); padding: 0.75rem 0.95rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08);">
+          <strong style="color: #38BDF8;">2. Live Normal Run:</strong> Execute <code>python main.py --mode run</code> live to generate 1,000 verified leads in under 2 seconds.
+        </div>
+        <div style="background: rgba(0, 0, 0, 0.45); padding: 0.75rem 0.95rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08);">
+          <strong style="color: #FBBF24;">3. Live Failure Injection:</strong> Run <code>python main.py --mode fail-test</code> to demonstrate exponential backoff, jitter, and checkpoint resumption.
+        </div>
+        <div style="background: rgba(0, 0, 0, 0.45); padding: 0.75rem 0.95rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08);">
+          <strong style="color: #C084FC;">4. Live Formula Inspection:</strong> Open <code>output/IncuBrix_Submission_Workbook_Completed.xlsx</code> to audit AC, AD, and 04_SELF_CHECK formulas.
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Interview Defense Cheat Sheet -->
+    <div class="glass-card" style="margin-top: 1.25rem;">
+      <h3 style="color: white; margin-bottom: 0.75rem;">Live Interview Defense Cheat Sheet (Complete Preparation Guide)</h3>
+      <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.75rem;">
+        Detailed guide for tracing 5 random leads across the dataset, executing live refresh commands on new inputs, explaining deduplication architecture, and addressing senior trade-offs: <em>"Explain one decision you would change in v2"</em>.
+      </p>
+      <a href="https://github.com/santhosh-5544/incubrix-growth-engine/blob/main/docs/LIVE_INTERVIEW_DEFENSE_CHEAT_SHEET.md" target="_blank" class="lead-meta-link" style="font-size: 0.85rem; font-weight: 600;">Open LIVE_INTERVIEW_DEFENSE_CHEAT_SHEET.md ↗</a>
     </div>
   </section>
+
+  <!-- Video Theater Modal -->
+  <div id="videoTheaterModal" class="modal-overlay" onclick="closeTheater(event)">
+    <div class="theater-modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeTheaterDirect()">&times;</button>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+        <h3 id="theaterTitle" style="color: white; font-size: 1.25rem; margin: 0;">Video Presentation Theater</h3>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #34D399; font-weight: 700;">HD 720p • Master Render</span>
+      </div>
+      <div class="video-card-player" style="margin-bottom: 0;">
+        <video id="theaterPlayer" controls playsinline style="width: 100%; display: block; aspect-ratio: 16/9; background: #000;"></video>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -2512,6 +2693,58 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
         }
       }
     });
+
+    // Video player interaction helpers
+    function playPauseVideo(id) {
+      const v = document.getElementById(id);
+      if (!v) return;
+      if (v.paused) {
+        document.querySelectorAll('video').forEach(other => {
+          if (other !== v) other.pause();
+        });
+        v.play();
+      } else {
+        v.pause();
+      }
+    }
+
+    function seekVideo(id, seconds) {
+      const v = document.getElementById(id);
+      if (!v) return;
+      document.querySelectorAll('video').forEach(other => {
+        if (other !== v) other.pause();
+      });
+      v.currentTime = seconds;
+      v.play();
+    }
+
+    function openTheater(src, title) {
+      const modal = document.getElementById('videoTheaterModal');
+      const player = document.getElementById('theaterPlayer');
+      const titleEl = document.getElementById('theaterTitle');
+      if (!modal || !player) return;
+      
+      document.querySelectorAll('video').forEach(v => v.pause());
+      
+      titleEl.innerText = title;
+      player.src = src;
+      modal.classList.add('active');
+      player.play();
+    }
+
+    function closeTheater(e) {
+      if (e.target.id === 'videoTheaterModal') closeTheaterDirect();
+    }
+
+    function closeTheaterDirect() {
+      const modal = document.getElementById('videoTheaterModal');
+      const player = document.getElementById('theaterPlayer');
+      if (player) {
+        player.pause();
+        player.src = '';
+      }
+      if (modal) modal.classList.remove('active');
+    }
 
     // Initialize
     renderLeadsTable();
