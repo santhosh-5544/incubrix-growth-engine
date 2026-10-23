@@ -1064,12 +1064,19 @@ html_content = """<!DOCTYPE html>
       cursor: pointer;
       accent-color: var(--primary);
     }
-      accent-color: var(--primary);
-    }
 
     /* Section Display Logic */
-    .portal-section { display: none; }
-    .portal-section.active { display: block; }
+    .portal-section {
+      display: none !important;
+    }
+    .portal-section.active {
+      display: block !important;
+      animation: fadeInSection 0.25s ease forwards;
+    }
+    @keyframes fadeInSection {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     /* Floating Back-to-Top Button */
     .back-to-top {
@@ -2103,12 +2110,18 @@ tests/test_scoring.py::test_country_balance_distribution <span class="term-pass"
         console.warn('URL hash update:', err);
       }
 
-      // Smooth scroll back to top of the page so content starts cleanly from the top
-      if (shouldScroll) {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+      // Smooth scroll cleanly to the active section just below the sticky navigation bar
+      if (shouldScroll && target) {
+        if (sectionId === 'audit' && window.pageYOffset < 400) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const navOffset = 125;
+          const targetTop = window.pageYOffset + target.getBoundingClientRect().top - navOffset;
+          window.scrollTo({
+            top: Math.max(0, targetTop),
+            behavior: 'smooth'
+          });
+        }
       }
 
       // Initialize analytics charts on demand
